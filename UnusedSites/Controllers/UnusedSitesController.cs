@@ -8,17 +8,11 @@ using UnusedSites.Models;
 
 namespace UnusedSites.Controllers
 {
-    public class HomeController : Controller
+    public class UnusedSitesController : Controller
     {
         public IActionResult Home()
         {
             ViewData["Title"] = "Home";
-            return View();
-        }
-
-        public IActionResult AccountHome()
-        {
-            ViewData["Title"] = "Account Home";
             return View();
         }
 
@@ -28,5 +22,10 @@ namespace UnusedSites.Controllers
             return View();
         }
 
+        public IActionResult Dashboard()
+        {
+            ViewData["Title"] = "Dashboard";
+            return View();
+        }
     }
 }

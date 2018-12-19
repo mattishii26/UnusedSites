@@ -94,13 +94,14 @@
                 <div class="group">
                     <div class="half">
                         <ul class="utility-links social-media-links">
-                            <li><div class="header-cagov-logo"><a href="/"><img src="~/images/Ca-Gov-Logo-Gold.svg" alt="CA.gov" /></a></div></li>
-                            <li><a href="/"><span class="ca-gov-icon-home" aria-hidden="true"></span><span class="sr-only">Home</span></a></li>
-
-                            <li><a class="ca-gov-icon-facebook" title="Share via Facebook"><span class="sr-only">Facebook</span></a></li>
-                            <li><a class="ca-gov-icon-twitter" title="Share via Twitter"><span class="sr-only">Twitter</span></a></li>
-                            <li><a class="ca-gov-icon-google-plus" title="Share via Google+"><span class="sr-only">Google+</span></a></li>
-                            <li><a class="ca-gov-icon-email" title="Share via email"><span class="sr-only">Email</span></a></li>
+                            <li><div class="header-cagov-logo"><a href="https://www.ca.gov/"><img src="~/images/Ca-Gov-Logo-Gold.svg" alt="CA.gov" /></a></div></li>
+                            <li><a href="~/UnusedSites/Home"><span class="ca-gov-icon-home" aria-hidden="true"></span><span class="sr-only">Home</span></a></li>
+                            <!--
+        <li><a class="ca-gov-icon-facebook" title="Share via Facebook"><span class="sr-only">Facebook</span></a></li>
+        <li><a class="ca-gov-icon-twitter" title="Share via Twitter"><span class="sr-only">Twitter</span></a></li>
+        <li><a class="ca-gov-icon-google-plus" title="Share via Google+"><span class="sr-only">Google+</span></a></li>
+        <li><a class="ca-gov-icon-email" title="Share via email"><span class="sr-only">Email</span></a></li>
+    -->
                         </ul>
                     </div>
                     <div class="half settings-links p-t-sm">
@@ -131,7 +132,7 @@
 
         <!-- Branding -->
         <div class="branding">
-            <div class="header-organization-banner"><a href="/"><img src="~/images/template-logo.png" alt="Organization Title" /></a></div>
+            <div class="header-organization-banner"><a href="~/UnusedSites/Home"><img src="~/images/dgs_logo.jpg" alt="Organization Title" /></a></div>
         </div>
 
         <!-- mobile navigation controls -->
@@ -155,21 +156,22 @@
             <nav id="navigation" class="main-navigation singlelevelnav">
                 <ul id="nav_list" class="top-level-nav">
                     <li class="home-link nav-item">
-                        <a href="/" class="first-level-link"><span id="nav_home_container" class="ca-gov-icon-home" aria-hidden="true"></span>Home</a>
+                        <a href="~/UnusedSites/Home" class="first-level-link"><span id="nav_home_container" class="ca-gov-icon-home" aria-hidden="true"></span>Home</a>
                     </li>
 
                     <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "AddSite" ? "active nav-item" : "nav-item")">
-                        <a href="@Url.Action("AddSite", "Home")" class="first-level-link"><span class="ca-gov-icon-info-bubble" aria-hidden="true"></span>About</a>
+                        <a href="@Url.Action("AddSite", "UnusedSites")" class="first-level-link"><span class="ca-gov-icon-info-bubble" aria-hidden="true"></span>Add a Site</a>
                     </li>
-                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Structure" ? "active nav-item" : "nav-item")">
-                        <a href="@Url.Action("Structure", "Home")" class="first-level-link"><span class="ca-gov-icon-flowchart" aria-hidden="true"></span>Structure</a>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Dashboard" ? "active nav-item" : "nav-item")">
+                        <a href="@Url.Action("Dashboard", "UnusedSites")" class="first-level-link"><span class="ca-gov-icon-flowchart" aria-hidden="true"></span>Dashboard</a>
                     </li>
                     <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active nav-item" : "nav-item")">
-                        <a href="@Url.Action("Contact", "Home")" class="first-level-link"><span class="ca-gov-icon-lightbulb" aria-hidden="true"></span>Contact Us</a>
+                        <a href="@Url.Action("Home", "UnusedSites")" class="first-level-link"><span class="ca-gov-icon-lightbulb" aria-hidden="true"></span>Home</a>
                     </li>
+
                     @*<li class="nav-item" id="nav-item-search">
-                        <a href="javascript:;" class="first-level-link"><span class="ca-gov-icon-search" aria-hidden="true"></span>Search</a>
-                    </li>*@
+            <a href="javascript:;" class="first-level-link"><span class="ca-gov-icon-search" aria-hidden="true"></span>Search</a>
+        </li>*@
                 </ul>
             </nav>
             <div id="head-search" class="search-container">

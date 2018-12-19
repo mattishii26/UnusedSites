@@ -43,7 +43,7 @@ namespace UnusedSites
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Home}/{id?}");
+                    template: "{controller=UnusedSites}/{action=Home}/{id?}");
             });
         }
     }
