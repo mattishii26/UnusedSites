@@ -5,23 +5,61 @@
 </div>
 
 <div class="group">
-    <div class="btn-row">
-        <button class="btn btn-primary">ADD NEW UNUSED SITE</button>
+    <div class="row">
+        <div class="offset-three-quarters quarter text-center">
+            <button class="btn btn-primary">ADD NEW UNUSED SITE</button>
+        </div>
     </div>
 </div>
-
+<br />
+<div class="group">
+    <div class="row">
+        <div class="quarter">
+            <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                <input class="hidden-up pos-abs" type="checkbox">
+                <div class="check-icon-checkbox">
+                    <i class="ca-gov-icon-check-mark"></i>
+                </div>
+                Sent in?
+            </label>
+        </div>
+        <div class="quarter">
+            <label class="select">
+                <select name="email" id="email">
+                    <option selected>Filter By Year</option>
+                    <option>Generate from DB!</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                </select>
+            </label>
+        </div>
+        <div class="quarter">
+            <div class="input-group" id="districtCodeSort">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ca-gov-icon-search-right"></i></span>
+                </div>
+                <input type="text" class="form-control" id="validationFirstName" placeholder="District Code" value="Search By District Code">
+            </div>
+        </div>
+        <div class="quarter">
+            <div class="input-group" id="districtCodeSort">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="ca-gov-icon-search-right"></i></span>
+                </div>
+                <input type="text" class="form-control" id="validationFirstName" placeholder="School Name" value="Search By School Name">
+            </div>
+        </div>
+    </div>
+</div>
+<br />
 <div class="group">
     <div class="row">
         <div class="half text-left">
             Show X entries dropdown
         </div>
-        <div class="half text-right" style="padding-bottom: 5px;">
-            <input type="text" placeholder="Search..."/>
-        </div>
     </div>
 </div>
 
-<div class="group">
     <div class="table-responsive">
         <table class="table table-default">
             <thead>
@@ -35,6 +73,9 @@
                     <th>STATUS</th>
                     <th>SUBMITTED ONLINE</th>
                     <th>OPSC APPROVE</th>
+                    <th>Fee Waiver</th>
+                    <th>Reason</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +89,14 @@
                     <td>Paid</td>
                     <td>No</td>
                     <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>
+                        <div class="btn-row">
+                            <button class="btn btn-primary">Delete</button>
+                            <button class="btn btn-primary">Edit</button>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Bakersfield</td>
@@ -59,6 +108,14 @@
                     <td>Pending</td>
                     <td>Yes</td>
                     <td>No</td>
+                    <td>No</td>
+                    <td>No</td>
+                    <td>
+                        <div class="btn-row">
+                            <button class="btn btn-primary">Delete</button>
+                            <button class="btn btn-primary">Edit</button>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Hollister</td>
@@ -70,6 +127,28 @@
                     <td>Paid</td>
                     <td>Yes</td>
                     <td>Yes</td>
+                    <td>
+                        <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                            <input class="hidden-up pos-abs" type="checkbox">
+                            <div class="check-icon-checkbox">
+                                <i class="ca-gov-icon-check-mark"></i>
+                            </div>
+                        </label>
+                    </td>
+                    <td>
+                        <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                            <input class="hidden-up pos-abs" type="checkbox" checked>
+                            <div class="check-icon-checkbox">
+                                <i class="ca-gov-icon-check-mark"></i>
+                            </div>
+                        </label>
+                    </td>
+                    <td>
+                        <div class="btn-row">
+                            <button class="btn btn-primary">Delete</button>
+                            <button class="btn btn-primary">Edit</button>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Loomis</td>
@@ -81,16 +160,38 @@
                     <td>Pending</td>
                     <td>Yes</td>
                     <td>Yes</td>
+                    <td>
+                        <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                            <input class="hidden-up pos-abs" type="checkbox" checked>
+                            <div class="check-icon-checkbox">
+                                <i class="ca-gov-icon-check-mark"></i>
+                            </div>
+                        </label>
+                    </td>
+                    <td>
+                        <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                            <input class="hidden-up pos-abs" type="checkbox" checked>
+                            <div class="check-icon-checkbox">
+                                <i class="ca-gov-icon-check-mark"></i>
+                            </div>
+                        </label>
+                    </td>
+                    <td>
+                        <div class="btn-row">
+                            <button class="btn btn-primary">Delete</button>
+                            <button class="btn btn-primary">Edit</button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
-</div>
+
 
 <div class="group">
     <div class="row">
         <div class="half text-left">
-            Shoowing 1 to x of Y entries
+            Showing 1 to x of Y entries
         </div>
         <div class="half text-right">
             Previous 1 2 3 4 5 Next

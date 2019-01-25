@@ -5,3 +5,10 @@
 #extraPanel{
     display:none;
 }
+
+#requestAidPanel {
+    display: none;
+}
+#reduceFeePanel{
+    display:none;
+}

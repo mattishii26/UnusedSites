@@ -146,11 +146,37 @@
     <div class="panel-body">
         <div class="row form-group">
             <div class="third">
+                Request Aid?
+            </div>
+            <div class="two-thirds">
+                <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                    <input class="hidden-up pos-abs" type="checkbox" onclick="waiverHandler(this, 'requestAidPanel')">
+                    <div class="check-icon-checkbox">
+                        <i class="ca-gov-icon-check-mark"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
                 Waiver Needed?
             </div>
             <div class="two-thirds">
                 <label class="form-check-inline p-l-md m-l-0 m-r-md">
                     <input class="hidden-up pos-abs" type="checkbox" onclick="waiverHandler(this, 'waiverPanel')">
+                    <div class="check-icon-checkbox">
+                        <i class="ca-gov-icon-check-mark"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                Reduce Fees
+            </div>
+            <div class="two-thirds">
+                <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                    <input class="hidden-up pos-abs" type="checkbox" onclick="waiverHandler(this, 'reduceFeePanel')">
                     <div class="check-icon-checkbox">
                         <i class="ca-gov-icon-check-mark"></i>
                     </div>
@@ -181,7 +207,24 @@
     </div>
 </div>
 
+<div class="panel panel-overstated animate-fadeInUp" id="requestAidPanel">
+    <div class="panel-heading text-center">
+        <h3>Request Aid</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row form-group">
+            <div class="third">
+                <label class="form-control-label">
+                    Request for Aid Reason
+                </label>
+            </div>
+            
+        </div>
+        <div class="row form-group">
 
+        </div>
+    </div>
+</div>
 <div class="panel panel-overstated animate-fadeInUp" id="waiverPanel">
     <div class="panel-heading text-center">
         <h3>Waivers And Fees</h3>
@@ -207,6 +250,24 @@
                 <input type="text" class="form-control" id="agentPhone" placeholder="Enter Agent Phone Number">
 
             </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-overstated animate-fadeInUp" id="reduceFeePanel">
+    <div class="panel-heading text-center">
+        <h3>Reduce Fee</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row form-group">
+            <div class="third">
+                <label class="form-control-label">
+                    Request for fee reduction
+                </label>
+            </div>
+
+        </div>
+        <div class="row form-group">
+
         </div>
     </div>
 </div>
