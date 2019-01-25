@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using UnusedSites.Models;
+using UnusedSites.Data;
 
 namespace UnusedSites.Controllers
 {
@@ -24,8 +25,9 @@ namespace UnusedSites.Controllers
 
         public IActionResult Dashboard()
         {
+            var sites =  SiteData.GetSites().ToList();
             ViewData["Title"] = "Dashboard";
-            return View();
+            return View(sites);
         }
     }
 }

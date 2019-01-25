@@ -1,4 +1,5 @@
-﻿<div class="group">
+﻿@model List<UnusedSites.Models.Site>
+<div class="group">
     <aside class="featured-narrative text-center">
         <h1>Unused Sites Program</h1>
     </aside>
@@ -26,62 +27,29 @@
         <table class="table table-default">
             <thead>
                 <tr>
-                    <th>DISTRICT NAME</th>
-                    <th>DISTRICT CODE</th>
-                    <th>UNUSED SITE NAME</th>
-                    <th>CURRENT ASSESSED VALUE</th>
-                    <th>CURRENT ASSESSED FEE</th>
-                    <th>FISCAL YEAR</th>
-                    <th>STATUS</th>
-                    <th>SUBMITTED ONLINE</th>
-                    <th>OPSC APPROVE</th>
+                    <th>ID</th>
+                    <th>DISTRICT Name</th>
+                    <th>SITE NAME</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Alta Loma</td>
-                    <td>1024</td>
-                    <td>Campbell</td>
-                    <td>3,412</td>
-                    <td>34.12</td>
-                    <td>2016</td>
-                    <td>Paid</td>
-                    <td>No</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>Bakersfield</td>
-                    <td>4876</td>
-                    <td>Harding</td>
-                    <td>32,145</td>
-                    <td>321.45</td>
-                    <td>2018</td>
-                    <td>Pending</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td>Hollister</td>
-                    <td>9547</td>
-                    <td>Smallwood</td>
-                    <td>54,654</td>
-                    <td>546.54</td>
-                    <td>2017</td>
-                    <td>Paid</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>Loomis</td>
-                    <td>1264</td>
-                    <td>Taylor</td>
-                    <td>27,452</td>
-                    <td>274.52</td>
-                    <td>2018</td>
-                    <td>Pending</td>
-                    <td>Yes</td>
-                    <td>Yes</td>
-                </tr>
+                @foreach(var item in Model){
+                    <tr>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.District
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Status
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
