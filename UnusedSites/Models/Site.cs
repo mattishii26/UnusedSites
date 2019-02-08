@@ -22,17 +22,20 @@ namespace UnusedSites.Models{
 
     public class District
     {
-        public District(int Id, string Dist, string Name, string Status)
+        public District(int Id, string Dist, string Name, string Status, List<Site> Sites)
         {
             this.Id = Id;
             this.Dist = Dist;
             this.Name = Name;
             this.Status = Status;
+            this.Sites = Sites;
         }
         public int Id { get; set; }
         public string Dist{ get; set; }
         public string Name { get; set; }
         public string Status { get; set; }
+        public List<Site> Sites { get; set; }
 
     }
+
 }

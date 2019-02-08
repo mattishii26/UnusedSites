@@ -34,6 +34,7 @@ namespace UnusedSites.Controllers
         {
             var dist = SiteData.GetDistrictInfo(district);
             ViewData["Title"] = "District";
+            
             return View(dist);
         }
     }
