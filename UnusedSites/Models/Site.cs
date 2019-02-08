@@ -19,4 +19,20 @@ namespace UnusedSites.Models{
         public string Status{get;set;}
 
     }
+
+    public class District
+    {
+        public District(int Id, string Dist, string Name, string Status)
+        {
+            this.Id = Id;
+            this.Dist = Dist;
+            this.Name = Name;
+            this.Status = Status;
+        }
+        public int Id { get; set; }
+        public string Dist{ get; set; }
+        public string Name { get; set; }
+        public string Status { get; set; }
+
+    }
 }

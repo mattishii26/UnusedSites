@@ -16,6 +16,15 @@ namespace UnusedSites.Data{
             sites[3] = new Site(4, "Loomis", "Taylor", "Modified");
             return sites;
         }
+
+        public static District GetDistrictInfo(String district)
+        {
+            District dist = new District(1, "Alta Loma", "Campbell", "Used");
+
+
+            return dist;
+        }
+        
     }
 
 }
