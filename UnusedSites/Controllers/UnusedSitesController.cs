@@ -37,5 +37,13 @@ namespace UnusedSites.Controllers
             
             return View(dist);
         }
+
+        public IActionResult Site(String district)
+        {
+            var site = SiteData.GetSite(district);
+            ViewData["Title"] = "DistrictSites";
+
+            return View(site);
+        }
     }
 }

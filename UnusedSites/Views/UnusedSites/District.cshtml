@@ -1,81 +1,69 @@
 ﻿@model UnusedSites.Models.District
 <div class="group">
     <aside class="featured-narrative text-center">
-        <h1>Unused Sites Program</h1>
+        <h1>@Model.Name District</h1>
     </aside>
 </div>
 
 <div class="group">
     <div class="btn-row">
         <button class="btn btn-primary">ADD NEW UNUSED SITE</button>
+        <input style="float: right;"type="text" placeholder="Search..." />
     </div>
 </div>
 
-<div class="group">
+@*<div class="group">
     <div class="row">
-        <div class="half text-left">
-            Show X entries dropdown
-        </div>
         <div class="half text-right" style="padding-bottom: 5px;">
             <input type="text" placeholder="Search..." />
         </div>
     </div>
-</div>
+</div>*@
 
 <div class="group">
     <div class="table-responsive">
+        <ul style="list-style-type: none; font-size: 20px; padding: 0;">
+            <li><b>ID:</b> @Model.Id</li>
+            <li><b>Name:</b> @Model.Name</li>
+            <li><b>Contact:</b> @Model.Contact_Salt @Model.Contact_FName @Model.Contact_LName</li>
+            <li><b>Contact Phone Number:</b> @Model.Contact_PNumber</li>
+            <li><b>Date Sent:</b> @Model.Date_Sent</li>
+            <li><b>Date Received:</b> @Model.Date_Received</li>
+        </ul>
         <table class="table table-default">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>DISTRICT NAME</th>
                     <th>SITE NAME</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        @Model.Name
-                    </td>
-                    <td>
-                        @Model.Dist
-                    </td>
-                    <td>
-                        @Model.Name
-                    </td>
-                    <td>
-                        @Model.Status
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-default">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>DISTRICT Name</th>
-                    <th>SITE NAME</th>
-                    <th>Status</th>
+                    <th>STATUS</th>
+                    <th>YEAR LAST USED</th>
+                    <th>CURRENT VALUE</th>
+                    <th>GRADE LEVEL</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model.Sites)
                 {
-                    <tr>
-                        <td>
-                            @item.Name
-                        </td>
-                        <td>
-                            @item.District
-                        </td>
-                        <td>
-                            @item.Name
-                        </td>
-                        <td>
-                            @item.Status
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Status
+                    </td>
+                    <td>
+                        @item.YearLastUsed
+                    </td>
+                    <td>
+                        $@item.CurrentValue
+                    </td>
+                    <td>
+                        @item.GradeLevel
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
