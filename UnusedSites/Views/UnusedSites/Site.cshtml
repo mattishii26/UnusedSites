@@ -10,6 +10,7 @@
         <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
         <button class="btn btn-primary">EDIT SITE</button>
         <button onclick="location.href='@Url.Action("District", "UnusedSites", new {id = Model.District})';return false;" class="btn btn-primary">BACK</button>
+        <button class="btn btn-primary">APPROVE</button>
     </div>
 </div>
 <div class="group" style="font-size: 20px;">
@@ -21,6 +22,7 @@
                 <li><b>District: </b>@Model.District</li>
                 <li><b>Name: </b>@Model.Name</li>
                 <li><b>Status: </b>@Model.Status</li>
+                <li><b>Reason: </b>@Model.Reason</li>
                 <li><b>Number of Acres: </b>@Model.NumAcres</li>
                 <li><b>Month Last Used: </b>@Model.MonthLastUsed</li>
                 <li><b>Year Last Used: </b>@Model.YearLastUsed</li>
@@ -35,6 +37,7 @@
                 <li><b>Current Value: </b>$@Model.CurrentValue</li>
                 <li><b>Month Appraised: </b>@Model.MonthAppraised</li>
                 <li><b>Year Appraised: </b>@Model.YearAppraised</li>
+                <li><b>Apporved: </b>@Model.Approved</li>
             </ul>
         </div>*@
     <table class="table table-default">
@@ -61,8 +64,8 @@
             <td>@Model.YearAppraised</td>
         </tr>
         <tr>
-            <th>Number of Acres</th>
-            <td>@Model.NumAcres</td>
+            <th>Reason</th>
+            <td>@Model.Reason</td>
             <th>Month Appraised</th>
             <td>@Model.MonthAppraised</td>
         </tr>
@@ -77,6 +80,12 @@
             <td>@Model.YearLastUsed</td>
             <th>Grade Level</th>
             <td>@Model.GradeLevel</td>
+        </tr>
+        <tr>
+            <th>Number of Acres</th>
+            <td>@Model.NumAcres</td>
+            <th>Approved</th>
+            <td>@Model.Approved</td>
         </tr>
     </table>
     @*<table class="table table-default">

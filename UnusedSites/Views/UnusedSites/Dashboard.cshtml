@@ -17,6 +17,7 @@
             Show X entries dropdown
         </div>
         <div class="half text-right" style="padding-bottom: 5px;">
+            <input type="text" placeholder="Field..."/>
             <input type="text" placeholder="Search..."/>
         </div>
     </div>
@@ -31,9 +32,12 @@
                     <th>District</th>
                     <th>SITE NAME</th>
                     <th>STATUS</th>
+                    <th>REASON</th> 
                     <th>YEAR LAST USED</th>
                     <th>CURRENT VALUE</th>
                     <th>GRADE LEVEL</th>
+                    <th>CHANGES</th>
+                    <th>APPROVED</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,6 +56,9 @@
                             @item.Status
                         </td>
                         <td>
+                            @item.Reason
+                        </td>
+                        <td>
                             @item.YearLastUsed
                         </td>
                         <td>
@@ -60,6 +67,13 @@
                         <td>
                             @item.GradeLevel
                         </td>
+                        <td>
+                            @item.Changes
+                        </td>
+                        <td>
+                            @item.Approved
+                        </td>
+                        
                     </tr>
                 }
             </tbody>

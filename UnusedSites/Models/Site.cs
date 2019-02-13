@@ -8,7 +8,7 @@ using System.Web;
 namespace UnusedSites.Models{
     public class Site{
         public Site(int Id, string District, string Name, string Status, double NumAcres, int MonthLastUsed, int YearLastUsed, double PurchasePrice,
-            double AppraisedValue, int MonthAppraised, int YearAppraised, double CurrentValue, string GradeLevel)
+            double AppraisedValue, int MonthAppraised, int YearAppraised, double CurrentValue, string GradeLevel,string Changes, string Reason, string Approved)
         {
             this.Id = Id;
             this.District = District;
@@ -24,6 +24,9 @@ namespace UnusedSites.Models{
             this.YearAppraised = YearAppraised;
             this.CurrentValue = CurrentValue;
             this.GradeLevel = GradeLevel;
+            this.Changes = Changes;
+            this.Reason = Reason;
+            this.Approved = Approved;
             //this.YearsHeld = YearsHeld;
         } 
         public int Id{get;set;} 
@@ -40,6 +43,10 @@ namespace UnusedSites.Models{
         public int YearAppraised { get; set; }
         public double CurrentValue { get; set; }
         public string GradeLevel { get; set; }
+        public string Changes { get; set; }
+        public string Reason { get; set; }
+        public string Approved {get; set;}
+
 
         //public int YearsHeld { get; set; }
 

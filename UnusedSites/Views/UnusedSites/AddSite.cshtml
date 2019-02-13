@@ -81,10 +81,18 @@
         </div>
         <div class="row form-group">
             <div class="third">
-                <label for="gradeLevel"><span class="required-label">*</span>Grade Level:</label>
+                <label for="gradeLevel"><span class="required-label">*</span>Grade Level Start:</label>
             </div>
             <div class="two-thirds">
-                <input type="text" class="form-control" id="gradeLevel" placeholder="Enter Grade Level">
+                <input type="text" class="form-control" id="gradeLevel" placeholder="Enter Starting Grade Level">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="gradeLevel"><span class="required-label">*</span>Grade Level End:</label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="gradeLevel" placeholder="Enter Ending Grade Level">
             </div>
         </div>
         <div class="row form-group">
@@ -93,6 +101,14 @@
             </div>
             <div class="two-thirds">
                 <input type="text" class="form-control" id="countyAssessor" placeholder="Enter County Assessor's Parcel Number">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="gradeLevel"><span class="required-label">*</span>Date Site Became Unused:</label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="gradeLevel" placeholder="Enter Date the Site became Unused">
             </div>
         </div>
     </div>
@@ -208,6 +224,28 @@
 
             </div>
         </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="agentPhone">
+                    <span class="required-label">*</span>Reason for Waiver:
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="agentPhone" placeholder="Reaon for Waiver">
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="agentPhone">
+                    <span class="required-label">*</span>Other Comments:
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="agentPhone" placeholder="Other Comments">
+
+            </div>
+        </div>
     </div>
 </div>
 
@@ -249,7 +287,7 @@
             By clicking the Submit button
         </div>
         <div class="row form-group text-center">
-            <button class="btn btn-primary">Submit</button>
+            <button onclick="location.href='@Url.Action("Dashboard", "UnusedSites")';return false;" class="btn btn-primary">Submit</button>
         </div>
         <div class="row form-group text-center">
             I certify that the above information is true and correct.

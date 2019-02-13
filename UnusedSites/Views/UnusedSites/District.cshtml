@@ -38,9 +38,12 @@
                     <th>ID</th>
                     <th>SITE NAME</th>
                     <th>STATUS</th>
+                    <th>REASON</th>
                     <th>YEAR LAST USED</th>
                     <th>CURRENT VALUE</th>
                     <th>GRADE LEVEL</th>
+                    <th>CHANGES</th>
+                    <th>APPROVED</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,6 +60,9 @@
                         @item.Status
                     </td>
                     <td>
+                        @item.Reason
+                    </td>
+                    <td>
                         @item.YearLastUsed
                     </td>
                     <td>
@@ -64,6 +70,12 @@
                     </td>
                     <td>
                         @item.GradeLevel
+                    </td>
+                    <td>
+                        @item.Changes
+                    </td>
+                    <td>
+                        @item.Approved
                     </td>
                 </tr>
                 }
