@@ -4,23 +4,11 @@
         <h1>Unused Sites Program</h1>
     </aside>
 </div>
-
-<div class="group">
-    <div class="btn-row">
-        <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
-    </div>
-</div>
 <br />
 <div class="group">
     <div class="row">
         <div class="quarter">
-            <label class="form-check-inline p-l-md m-l-0 m-r-md">
-                <input class="hidden-up pos-abs" type="checkbox">
-                <div class="check-icon-checkbox">
-                    <i class="ca-gov-icon-check-mark"></i>
-                </div>
-                Sent in?
-            </label>
+                <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
         </div>
         <div class="quarter">
             <label class="select">
@@ -55,10 +43,6 @@
     <div class="row">
         <div class="half text-left">
             Show X entries dropdown
-        </div>
-        <div class="half text-right" style="padding-bottom: 5px;">
-            <input type="text" placeholder="Field..."/>
-            <input type="text" placeholder="Search..."/>
         </div>
     </div>
 </div>
