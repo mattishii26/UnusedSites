@@ -6,10 +6,15 @@
 </div>
 
 <div class="group">
+<<<<<<< HEAD
     <div class="row">
         <div class="offset-three-quarters quarter text-center">
             <button class="btn btn-primary">ADD NEW UNUSED SITE</button>
         </div>
+=======
+    <div class="btn-row">
+        <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
+>>>>>>> UnusedSites/feature/dynamicDashboard
     </div>
 </div>
 <br />
@@ -58,6 +63,13 @@
         <div class="half text-left">
             Show X entries dropdown
         </div>
+<<<<<<< HEAD
+=======
+        <div class="half text-right" style="padding-bottom: 5px;">
+            <input type="text" placeholder="Field..."/>
+            <input type="text" placeholder="Search..."/>
+        </div>
+>>>>>>> UnusedSites/feature/dynamicDashboard
     </div>
 </div>
 
@@ -66,26 +78,51 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>DISTRICT Name</th>
+                    <th>District</th>
                     <th>SITE NAME</th>
-                    <th>Status</th>
+                    <th>STATUS</th>
+                    <th>REASON</th> 
+                    <th>YEAR LAST USED</th>
+                    <th>CURRENT VALUE</th>
+                    <th>GRADE LEVEL</th>
+                    <th>CHANGES</th>
+                    <th>APPROVED</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach(var item in Model){
                     <tr>
                         <td>
-                            @item.Name
+                            @item.Id
                         </td>
                         <td>
-                            @item.District
+                            @Html.ActionLink(item.District, "District", "UnusedSites", new {id = item.District})
                         </td>
                         <td>
-                            @item.Name
+                            @Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Name})
                         </td>
                         <td>
                             @item.Status
                         </td>
+                        <td>
+                            @item.Reason
+                        </td>
+                        <td>
+                            @item.YearLastUsed
+                        </td>
+                        <td>
+                            $@item.CurrentValue
+                        </td>
+                        <td>
+                            @item.GradeLevel
+                        </td>
+                        <td>
+                            @item.Changes
+                        </td>
+                        <td>
+                            @item.Approved
+                        </td>
+                        
                     </tr>
                 }
             </tbody>
