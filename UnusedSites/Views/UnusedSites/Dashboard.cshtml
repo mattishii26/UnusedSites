@@ -7,7 +7,7 @@
 
 <div class="group">
     <div class="btn-row">
-        <button class="btn btn-primary">ADD NEW UNUSED SITE</button>
+        <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
     </div>
 </div>
 
@@ -28,27 +28,39 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>DISTRICT Name</th>
+                    <th>District</th>
                     <th>SITE NAME</th>
-                    <th>Status</th>
+                    <th>STATUS</th>
+                    <th>YEAR LAST USED</th>
+                    <th>CURRENT VALUE</th>
+                    <th>GRADE LEVEL</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach(var item in Model){
-                <tr>
-                    <td>
-                        @item.Name
-                    </td>
-                    <td>
-                        @item.District
-                    </td>
-                    <td>
-                        @item.Name
-                    </td>
-                    <td>
-                        @item.Status
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @Html.ActionLink(item.District, "District", "UnusedSites", new {id = item.District})
+                        </td>
+                        <td>
+                            @Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Name})
+                        </td>
+                        <td>
+                            @item.Status
+                        </td>
+                        <td>
+                            @item.YearLastUsed
+                        </td>
+                        <td>
+                            $@item.CurrentValue
+                        </td>
+                        <td>
+                            @item.GradeLevel
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

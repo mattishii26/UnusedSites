@@ -5,7 +5,13 @@
     </aside>
 </div>
 
-
+<div class="group">
+    <div class="btn-row">
+        <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
+        <button class="btn btn-primary">EDIT SITE</button>
+        <button onclick="location.href='@Url.Action("District", "UnusedSites", new {id = Model.District})';return false;" class="btn btn-primary">BACK</button>
+    </div>
+</div>
 <div class="group" style="font-size: 20px;">
     @*@<div class="row">
         <div class="half text-left">
