@@ -18,7 +18,6 @@ namespace UnusedSites.Models{
             this.MonthLastUsed = MonthLastUsed;
             this.YearLastUsed = YearLastUsed;
             this.PurchasePrice = PurchasePrice;
-            //this.MonthAcquired = MonthAcquired;
             this.AppraisedValue = AppraisedValue;
             this.MonthAppraised = MonthAppraised;
             this.YearAppraised = YearAppraised;
@@ -27,7 +26,6 @@ namespace UnusedSites.Models{
             this.Changes = Changes;
             this.Reason = Reason;
             this.Approved = Approved;
-            //this.YearsHeld = YearsHeld;
         } 
         public int Id{get;set;} 
         public string District{get;set;} 
@@ -37,7 +35,6 @@ namespace UnusedSites.Models{
         public int MonthLastUsed { get; set; }
         public int YearLastUsed { get; set; }
         public double PurchasePrice { get; set; }
-        //public int MonthAcquired { get; set; }
         public double AppraisedValue { get; set; }
         public int MonthAppraised { get; set; }
         public int YearAppraised { get; set; }
@@ -47,9 +44,6 @@ namespace UnusedSites.Models{
         public string Reason { get; set; }
         public string Approved {get; set;}
 
-
-        //public int YearsHeld { get; set; }
-
     }
 
     public class District
@@ -58,9 +52,7 @@ namespace UnusedSites.Models{
             string Contact_PNumber, string Date_Sent, string Date_Received, string From424_Rec_Date, List<Site> Sites)
         {
             this.Id = Id;
-            //this.Dist = Dist;
             this.Name = Name;
-            //this.Status = Status;
             this.Contact_Salt = Contact_Salt;
             this.Contact_FName = Contact_FName;
             this.Contact_LName = Contact_LName;
@@ -70,10 +62,23 @@ namespace UnusedSites.Models{
             this.From424_Rec_Date = From424_Rec_Date;
             this.Sites = Sites;
         }
+
+        public District(int Id, string Name, string Contact_Salt, string Contact_FName, string Contact_LName,
+            string Contact_PNumber, string Date_Sent, string Date_Received, string From424_Rec_Date)
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Contact_Salt = Contact_Salt;
+            this.Contact_FName = Contact_FName;
+            this.Contact_LName = Contact_LName;
+            this.Contact_PNumber = Contact_PNumber;
+            this.Date_Sent = Date_Sent;
+            this.Date_Received = Date_Received;
+            this.From424_Rec_Date = From424_Rec_Date; 
+        }
         public int Id { get; set; }
         public string Dist { get; set; }
         public string Name { get; set; }
-        //public string Status { get; set; }
         public string StatContact_Saltus { get; set; }
         public string Contact_Salt { get; set; }
         public string Contact_FName { get; set; }

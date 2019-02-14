@@ -17,7 +17,7 @@ namespace UnusedSites.Data{
             return sites;
         }
 
-        public static District GetDistrictInfo(String district)
+        public static District GetDistrict(int id)
         {
             Site[] sites = new Site[4];
             sites[0] = new Site(1, "Alta Loma", "Campbell", "Used", 1.3, 11, 2018, 34000, 27000, 03, 2012, 35000, "k-8","Submitted", "NA", "No");
@@ -30,17 +30,26 @@ namespace UnusedSites.Data{
             return dist;
         }
 
-        public static Site GetSite(String district)
+        public static District[] GetDistricts(int Id)
         {
-            //Site[] sites = new Site[4];
-            Site site = new Site(1, "Alta Loma", "Campbell", "Used", 1.3, 11, 2018, 34000, 27000, 11, 2012, 35000, "k-12","Submitted", "NA", "yes");
-            //sites[1] = new Site(2, "Bakers", "Harding", "Unused, Charged");
-            //sites[2] = new Site(3, "Hollister", "Smallwood", "Sold");
-            //sites[3] = new Site(4, "Loomis", "Taylor", "Modified");
+            District[] districts = new District[4];
+            districts[0] = new District(1, "Alta Loma", "Mr.", "John", "Doe", "(916)461-4621","06/24/2017","07/07/2017", "07/07/2017");
+            districts[1] = new District(1, "Alta Loma", "Mr.", "John", "Doe", "(916)461-4621","06/24/2017","07/07/2017", "07/07/2017");
+            districts[2] = new District(1, "Alta Loma", "Mr.", "John", "Doe", "(916)461-4621","06/24/2017","07/07/2017", "07/07/2017");
+            districts[3] = new District(1, "Alta Loma", "Mr.", "John", "Doe", "(916)461-4621","06/24/2017","07/07/2017", "07/07/2017");
 
-            //District dist = new District(1, "Alta Loma", "Campbell", "Used", sites.ToList());
+            return districts;
 
-            return site;
+        }
+
+        public static Site[] GetSite(int  Id)
+        {
+            Site[] sites = new Site[4];
+            sites[0] = new Site(1, "Alta Loma", "Campbell", "Used",1.3,11,2018,34000,27000, 08, 2012,35000,"k-12","Submitted", "NA", "No");
+            sites[1] = new Site(2, "Bakers", "Harding", "Unused",4, 07, 2018, 62000, 55000, 11, 2013, 52000, "k-12","Submitted", "3", "Yes"); 
+            sites[2] = new Site(3, "Hollister", "Smallwood", "Sold",5, 01, 2018, 52000, 65000, 01, 2015, 62000, "k-12","Submitted", "NA", "Yes");
+            sites[3] = new Site(4, "Loomis", "Taylor", "Unused",6, 12, 2018, 19000, 24000, 12, 2017, 22000, "k-12","Submitted", "2", "Yes");
+            return sites;
         }
 
     }

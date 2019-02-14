@@ -9,7 +9,7 @@
     <div class="btn-row">
         <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
         <button class="btn btn-primary">EDIT SITE</button>
-        <button onclick="location.href='@Url.Action("District", "UnusedSites", new {id = Model.District})';return false;" class="btn btn-primary">BACK</button>
+        <button onclick="location.href='@Url.Action("District", "UnusedSites", ViewData["districtId"])';return false;" class="btn btn-primary">BACK</button>
         <button class="btn btn-primary">APPROVE</button>
     </div>
 </div>
@@ -116,3 +116,7 @@
     </table>*@
     @*</div>*@
 </div>
+
+<script>
+
+</script>

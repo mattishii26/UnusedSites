@@ -54,7 +54,7 @@
                         @item.Id
                     </td>
                     <td>
-                        @Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Name})
+                        @Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Name, districtId = Model.Id})
                     </td>
                     <td>
                         @item.Status

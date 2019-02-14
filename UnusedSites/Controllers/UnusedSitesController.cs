@@ -30,18 +30,19 @@ namespace UnusedSites.Controllers
             return View(sites);
         }
 
-        public IActionResult District(String district)
+        public IActionResult District(int id)
         {
-            var dist = SiteData.GetDistrictInfo(district);
+            var dist = SiteData.GetDistrict(id);
             ViewData["Title"] = "District";
             
             return View(dist);
         }
 
-        public IActionResult Site(String district)
+        public IActionResult Site(int id, int districtId)
         {
-            var site = SiteData.GetSite(district);
+            var site = SiteData.GetSite(id)[0];
             ViewData["Title"] = "DistrictSites";
+            ViewData["districtId"] = districtId;
 
             return View(site);
         }
