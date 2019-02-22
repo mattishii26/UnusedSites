@@ -13,7 +13,7 @@ namespace UnusedSites.Api
     {
         private static IConfigurationRoot Configuration;
 
-        public static string GetConnectionString()
+        private static string GetConnectionString()
         {
             var builder = new ConfigurationBuilder()
                    .SetBasePath(Directory.GetCurrentDirectory())
@@ -24,30 +24,93 @@ namespace UnusedSites.Api
             return connectionString;
         }
 
-        public static DataTable SelectQuery(string query)
+        /**
+         *  Basic Select Query
+         *  
+         *  return DataTable
+         **/
+        public static DataTable SelectQuery(string query, List<object> paramVals)
         {
-            DataTable temp;
+            DataTable data = new DataTable();
 
-            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            try
             {
-                con.Open();
-
-                using (SqlCommand cmd = con.CreateCommand())
+                using (SqlConnection con = new SqlConnection(GetConnectionString()))
                 {
-                    cmd.CommandText = @query;
+                    con.Open();
 
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    using (SqlCommand cmd = con.CreateCommand())
                     {
-                        DataSet ds = new DataSet();
+                        cmd.CommandText = query;
+                        int count = 0;
+                        foreach (object o in paramVals)
+                        {
+                            if (o is string) { cmd.Parameters.Add("@p" + count, SqlDbType.NVarChar); }
+                            else if (o is int) { cmd.Parameters.Add("@p" + count, SqlDbType.Int); }
+                            else if (o is short) { cmd.Parameters.Add("@p" + count, SqlDbType.SmallInt); }
+                            cmd.Parameters["@p" + count].Value = o;
+                            count++;
+                        }
+                        Console.WriteLine(cmd.CommandText.ToString());
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            DataSet ds = new DataSet();
 
-                        da.Fill(ds, "tablename");
-                        con.Close();
+                            da.Fill(ds, "table");
+                            con.Close();
 
-                        temp = ds.Tables["tablename"];
+                            data = ds.Tables["table"];
+                        }
                     }
                 }
             }
-            return temp;
+            catch (Exception e)
+            {
+                //logging
+            }
+
+            return data;
         }
+
+        /**
+         * Basic Query for Create Update and Delete
+         * 
+         * return int - number of rows affected, 0 means failed
+         **/
+        public static int CUDQuery(string query, List<object> paramVals)
+        {
+            int res = 0;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(GetConnectionString()))
+                {
+                    con.Open();
+
+                    using (SqlCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = query;
+                        int count = 0;
+                        foreach (object o in paramVals)
+                        {
+                            if (o is string) { cmd.Parameters.Add("@p" + count, SqlDbType.NVarChar); }
+                            else if (o is int) { cmd.Parameters.Add("@p" + count, SqlDbType.Int); }
+                            else if (o is short) { cmd.Parameters.Add("@p" + count, SqlDbType.SmallInt); }
+                            cmd.Parameters["@p" + count].Value = o;
+                            count++;
+                        }
+                        Console.WriteLine(cmd.CommandText.ToString());
+                        res = cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // logging
+                Console.WriteLine(e.Message);
+            }
+            return res;
+        }
+
+
     }
 }
