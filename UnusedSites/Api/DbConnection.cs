@@ -32,13 +32,11 @@ namespace UnusedSites.Api
         public static DataTable SelectQuery(string query, List<object> paramVals)
         {
             DataTable data = new DataTable();
-
             try
             {
                 using (SqlConnection con = new SqlConnection(GetConnectionString()))
                 {
                     con.Open();
-
                     using (SqlCommand cmd = con.CreateCommand())
                     {
                         cmd.CommandText = query;
@@ -51,7 +49,6 @@ namespace UnusedSites.Api
                             cmd.Parameters["@p" + count].Value = o;
                             count++;
                         }
-                        Console.WriteLine(cmd.CommandText.ToString());
                         using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                         {
                             DataSet ds = new DataSet();
@@ -68,7 +65,6 @@ namespace UnusedSites.Api
             {
                 //logging
             }
-
             return data;
         }
 
@@ -85,7 +81,6 @@ namespace UnusedSites.Api
                 using (SqlConnection con = new SqlConnection(GetConnectionString()))
                 {
                     con.Open();
-
                     using (SqlCommand cmd = con.CreateCommand())
                     {
                         cmd.CommandText = query;
@@ -98,7 +93,6 @@ namespace UnusedSites.Api
                             cmd.Parameters["@p" + count].Value = o;
                             count++;
                         }
-                        Console.WriteLine(cmd.CommandText.ToString());
                         res = cmd.ExecuteNonQuery();
                     }
                 }
@@ -106,11 +100,9 @@ namespace UnusedSites.Api
             catch (Exception e)
             {
                 // logging
-                Console.WriteLine(e.Message);
             }
             return res;
         }
-
 
     }
 }
