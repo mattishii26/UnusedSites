@@ -18,5 +18,18 @@ namespace UnusedSites.Api
             return DbConnection.SelectQuery(query, new List<object>());
         }
 
+        public static DataTable GetDistrict(int dist_code)
+        {
+            string query = @"SELECT co_code, dist_code, site_code, status, num_acres, mo_last_used, yr_last_used, purch_price, appraised_value,
+                            mo_appraised, current_value, grade_level
+                            FROM db.unusedvb
+                            WHERE dist_code = @p0;";
+            List<object> param = new List<object>();
+            param.Add(dist_code);
+
+            return DbConnection.SelectQuery(query, param);
+        }
+
     }
+
 }

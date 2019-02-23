@@ -48,5 +48,28 @@ namespace UnusedSites.Api
 
             return false;
         }
+
+        public static Boolean DeleteSite(int dist_code, int site_code)
+        {
+            string delete = @"DELETE FROM db.site
+                              WHERE dist_code = @p0 AND site_code = @p1;";
+            List<object> dprms = new List<object>();
+            dprms.Add(dist_code);
+            dprms.Add(site_code);
+
+            DateTime time = DateTime.Now;
+            string update = @"UPDATE db.unusedvb
+                              SET site_deleted = @p0
+                              WHERE dist_code = @p1 AND site_code = @p2;";
+            List<object> sprms = new List<object>();
+            sprms.Add(time);
+            sprms.Add(dist_code);
+            sprms.Add(site_code);
+
+            if (DbConnection.CUDQuery(delete, dprms) > 0 && DbConnection.CUDQuery(update, sprms) > 0)
+                return true;
+            return false;
+        }
+
     }
 }

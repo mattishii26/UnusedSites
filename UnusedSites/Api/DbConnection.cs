@@ -46,6 +46,7 @@ namespace UnusedSites.Api
                             if (o is string) { cmd.Parameters.Add("@p" + count, SqlDbType.NVarChar); }
                             else if (o is int) { cmd.Parameters.Add("@p" + count, SqlDbType.Int); }
                             else if (o is short) { cmd.Parameters.Add("@p" + count, SqlDbType.SmallInt); }
+                            else if (o is DateTime) { cmd.Parameters.Add("@p" + count, SqlDbType.SmallDateTime); }
                             cmd.Parameters["@p" + count].Value = o;
                             count++;
                         }
@@ -90,6 +91,7 @@ namespace UnusedSites.Api
                             if (o is string) { cmd.Parameters.Add("@p" + count, SqlDbType.NVarChar); }
                             else if (o is int) { cmd.Parameters.Add("@p" + count, SqlDbType.Int); }
                             else if (o is short) { cmd.Parameters.Add("@p" + count, SqlDbType.SmallInt); }
+                            else if (o is DateTime) { cmd.Parameters.Add("@p" + count, SqlDbType.SmallDateTime); }
                             cmd.Parameters["@p" + count].Value = o;
                             count++;
                         }
