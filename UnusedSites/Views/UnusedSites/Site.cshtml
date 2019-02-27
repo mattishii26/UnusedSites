@@ -1,7 +1,7 @@
-﻿@model UnusedSites.Models.Site
+﻿@model List<UnusedSites.Models.Site>
 <div class="group">
     <aside class="featured-narrative text-center">
-        <h1>@Model.Name School Site</h1>
+        <h1>Campbell School Site</h1>
     </aside>
 </div>
 
@@ -13,109 +13,70 @@
         <button class="btn btn-primary">APPROVE</button>
     </div>
 </div>
-<div class="group" style="font-size: 20px;">
-    @*@<div class="row">
-        <div class="half text-left">
-            <h3>Site Information</h3>
-            <ul style="list-style-type: none; padding: 0;">
-                <li><b>ID: </b>@Model.Id</li>
-                <li><b>District: </b>@Model.District</li>
-                <li><b>Name: </b>@Model.Name</li>
-                <li><b>Status: </b>@Model.Status</li>
-                <li><b>Reason: </b>@Model.Reason</li>
-                <li><b>Number of Acres: </b>@Model.NumAcres</li>
-                <li><b>Month Last Used: </b>@Model.MonthLastUsed</li>
-                <li><b>Year Last Used: </b>@Model.YearLastUsed</li>
-                <li><b>Grade Level: </b>@Model.GradeLevel</li>
-            </ul>
+<div class="carousel owl-carousel carousel-content">
+    @foreach (var item in Model)
+     {
+        <div class="content-container" style="color: black;">
+
+            <div class="content">
+
+                <div class="group" style="font-size: 20px;">
+                    <table class="table table-default">
+                        <tr>
+                            <th colspan="4"> @item.YearLastUsed</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Site Information</th>
+                            <th colspan="2">Appraisal Information</th>
+                        </tr>
+                        <tr>
+                            <th>ID</th>
+                            <td>@item.Id</td>
+                            <th>Purchase Price</th>
+                            <td>$@item.PurchasePrice</td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td>@item.Name</td>
+                            <th>Appraised Value</th>
+                            <td>$@item.AppraisedValue</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>@item.Status</td>
+                            <th>Year Appraised</th>
+                            <td>@item.YearAppraised</td>
+                        </tr>
+                        <tr>
+                            <th>Reason</th>
+                            <td>@item.Reason</td>
+                            <th>Month Appraised</th>
+                            <td>@item.MonthAppraised</td>
+                        </tr>
+                        <tr>
+                            <th>Month Last Used</th>
+                            <td>@item.MonthLastUsed</td>
+                            <th>Current Value</th>
+                            <td>$@item.CurrentValue</td>
+                        </tr>
+                        <tr>
+                            <th>Year Last Used</th>
+                            <td>@item.YearLastUsed</td>
+                            <th>Grade Level</th>
+                            <td>@item.GradeLevel</td>
+                        </tr>
+                        <tr>
+                            <th>Number of Acres</th>
+                            <td>@item.NumAcres</td>
+                            <th>Approved</th>
+                            <td>@item.Approved</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="half text-right">
-            <h3>Appraisal Information</h3>
-            <ul style="list-style-type: none;">
-                <li><b>Purchase Price: </b>$@Model.PurchasePrice</li>
-                <li><b>Appraised Value: </b>$@Model.AppraisedValue</li>
-                <li><b>Current Value: </b>$@Model.CurrentValue</li>
-                <li><b>Month Appraised: </b>@Model.MonthAppraised</li>
-                <li><b>Year Appraised: </b>@Model.YearAppraised</li>
-                <li><b>Apporved: </b>@Model.Approved</li>
-            </ul>
-        </div>*@
-    <table class="table table-default">
-        <tr>
-            <th colspan="2">Site Information</th>
-            <th colspan="2">Appraisal Information</th>
-        </tr>
-        <tr>
-            <th>ID</th>
-            <td>@Model.Id</td>
-            <th>Purchase Price</th>
-            <td>$@Model.PurchasePrice</td>
-        </tr>
-        <tr>
-            <th>Name</th>
-            <td>@Model.Name</td>
-            <th>Appraised Value</th>
-            <td>$@Model.AppraisedValue</td>
-        </tr>
-        <tr>
-            <th>Status</th>
-            <td>@Model.Status</td>
-            <th>Year Appraised</th>
-            <td>@Model.YearAppraised</td>
-        </tr>
-        <tr>
-            <th>Reason</th>
-            <td>@Model.Reason</td>
-            <th>Month Appraised</th>
-            <td>@Model.MonthAppraised</td>
-        </tr>
-        <tr>
-            <th>Month Last Used</th>
-            <td>@Model.MonthLastUsed</td>
-            <th>Current Value</th>
-            <td>$@Model.CurrentValue</td>
-        </tr>
-        <tr>
-            <th>Year Last Used</th>
-            <td>@Model.YearLastUsed</td>
-            <th>Grade Level</th>
-            <td>@Model.GradeLevel</td>
-        </tr>
-        <tr>
-            <th>Number of Acres</th>
-            <td>@Model.NumAcres</td>
-            <th>Approved</th>
-            <td>@Model.Approved</td>
-        </tr>
-    </table>
-    @*<table class="table table-default">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>DISTRICT NAME</th>
-                <th>SITE NAME</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    @Model.Name
-                </td>
-                <td>
-                    @Model.District
-                </td>
-                <td>
-                    @Model.Name
-                </td>
-                <td>
-                    @Model.Status
-                </td>
-            </tr>
-        </tbody>
-    </table>*@
-    @*</div>*@
-</div>
+    }
+    </div>
 
 <script>
 

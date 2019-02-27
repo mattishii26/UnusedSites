@@ -1,4 +1,4 @@
-﻿@model List<UnusedSites.Models.Site>
+﻿@model List<UnusedSites.Models.District>
 <div class="group">
     <aside class="featured-narrative text-center">
         <h1>Unused Sites Program</h1>
@@ -53,14 +53,12 @@
                 <tr>
                     <th>ID</th>
                     <th>District</th>
-                    <th>SITE NAME</th>
-                    <th>STATUS</th>
-                    <th>REASON</th> 
-                    <th>YEAR LAST USED</th>
-                    <th>CURRENT VALUE</th>
-                    <th>GRADE LEVEL</th>
-                    <th>CHANGES</th>
-                    <th>APPROVED</th>
+                    <th>CONTACT</th>
+                    <th>PHONE NUMBER</th>
+                    <th>DATE SENT</th> 
+                    <th>DATE RECIEVED</th>
+                    <th>424 FORM DATE RECIEVED</th>
+                    <th>NUMBER OF SITES</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,34 +67,30 @@
                         <td>
                             @item.Id
                         </td>
-                        <td>
-                            @Html.ActionLink(item.District, "District", "UnusedSites", new {id = item.District})
+                        <td>                 
+                            @Html.ActionLink(item.Name, "District", "UnusedSites", new {id = item.Name })
                         </td>
                         <td>
-                            @Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Name})
+                            @item.Contact_Salt
+                            @*@Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Name})*@
+                            @item.Contact_FName
+                            @item.Contact_LName
                         </td>
                         <td>
-                            @item.Status
+                            @item.Contact_PNumber
                         </td>
                         <td>
-                            @item.Reason
+                            @item.Date_Sent
                         </td>
                         <td>
-                            @item.YearLastUsed
+                            @item.Date_Received
                         </td>
                         <td>
-                            $@item.CurrentValue
-                        </td>
+                            @item.From424_Rec_Date
+                        </td>  
                         <td>
-                            @item.GradeLevel
+                            @item.NumSites
                         </td>
-                        <td>
-                            @item.Changes
-                        </td>
-                        <td>
-                            @item.Approved
-                        </td>
-                        
                     </tr>
                 }
             </tbody>

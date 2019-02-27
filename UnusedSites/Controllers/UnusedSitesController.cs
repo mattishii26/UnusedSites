@@ -25,9 +25,9 @@ namespace UnusedSites.Controllers
 
         public IActionResult Dashboard()
         {
-            var sites =  SiteData.GetSites().ToList();
+            var districts =  SiteData.GetDistricts().ToList();
             ViewData["Title"] = "Dashboard";
-            return View(sites);
+            return View(districts);
         }
 
         public IActionResult District(int id)
@@ -40,7 +40,7 @@ namespace UnusedSites.Controllers
 
         public IActionResult Site(int id, int districtId)
         {
-            var site = SiteData.GetSite(id)[0];
+            var site = SiteData.GetSite(id).ToList();
             ViewData["Title"] = "DistrictSites";
             ViewData["districtId"] = districtId;
 
