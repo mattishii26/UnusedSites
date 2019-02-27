@@ -23,7 +23,7 @@
                 <div class="group" style="font-size: 20px;">
                     <table class="table table-default">
                         <tr>
-                            <th colspan="4"> @item.YearLastUsed</th>
+                            <th colspan="4"> @item.YearLastUsed     <br/>324 Crest Drive San Jose, CA</th>
                         </tr>
                         <tr>
                             <th colspan="2">Site Information</th>
@@ -70,6 +70,12 @@
                             <td>@item.NumAcres</td>
                             <th>Approved</th>
                             <td>@item.Approved</td>
+                        </tr>
+                        <tr>
+                            <th>Parcels</th>
+                            <td>@item.Id</td>
+                            <th>Fee Assessed</th>
+                            <td>$@item.CurrentValue</td>
                         </tr>
                     </table>
                 </div>
