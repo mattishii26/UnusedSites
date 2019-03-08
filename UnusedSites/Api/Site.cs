@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace UnusedSites.Api
 {
@@ -70,6 +71,34 @@ namespace UnusedSites.Api
                 return true;
             return false;
         }
+
+        public static DataTable GetSite(int site_code)
+        {
+            //check to make sure this matches API fields, missing changes, reason, approved
+            string query = @"SELECT site.site_code, dist.dist_name, site.site_name, site.Status, un.num_acres, 
+                                    un.mo_last_used, un.yr_last_used, un.purch_price, un.appraised_value, 
+                                    un.mo_appraised, un.yr_appraised, un.current_value, un.grade_level
+                            FROM db.site as site,  db.unusedvb as un, db.district as dist
+                            WHERE site.site_code = @p0 
+                            AND site.dist_code = un.dist_code AND site.dist_code = dist.dist_code;";
+            List<object> siteGetParams = new List<object>();
+            siteGetParams.Add(site_code);
+
+            return DbConnection.SelectQuery(query, siteGetParams); ;
+        }
+
+        /*public static Boolean UpdateSite(int id, String district, String name, String status, double numAcres
+                                         int monthLastUsed, int yearLastUsed, double purchasePrice, double appraisedValue,
+                                         int monthAppraised, int yearAppraised, double currentValue, String gradeLevel
+                                         )
+      
+
+            return false;
+
+        }*/
+
+
+
 
     }
 }
