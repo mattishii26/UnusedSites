@@ -8,6 +8,8 @@ namespace UnusedSites.Api
     public class Site
     {
 
+        enum Change { creation, updated }   // to be used with "Changes" column in db.approve
+
         public static Boolean CreateSite(string districtCode, string coCode, string siteName, string status, double numAcres, int monthLastUsed, int yearLastUsed,
             double purchasePrice, double appraisedValue, int monthAppraised, int yearAppraised, double currentValue, string gradeLevel)
         {
@@ -67,6 +69,70 @@ namespace UnusedSites.Api
             sprms.Add(site_code);
 
             if (DbConnection.CUDQuery(delete, dprms) > 0 && DbConnection.CUDQuery(update, sprms) > 0)
+                return true;
+            return false;
+        }
+
+        // External UpdateSite
+        // Updates a site entry in Approve Table for review
+        public static Boolean ExtUpdateSite(Dictionary<string, object> columns) {
+
+            List<object> prms = new List<object>();
+            string request;
+            string update = @"UPDATE db.approve ";
+            string set = @"SET Changes = @p0, ";
+            string where = @"WHERE dist_code = @p1 AND site_code = @p2;";
+
+            prms.Add(Change.updated.ToString());    // @p0
+
+            object dist_code, site_code;
+            if (!(columns.TryGetValue("dist_code", out dist_code) && columns.TryGetValue("site_code", out site_code))) {
+                // basically, this means you didn't successfully add either dist/site code to the dictionary
+                return false;
+            }
+            // if all goes well.
+            prms.Add((int) dist_code);    // @p1
+            prms.Add((int) site_code);    // @p2
+
+            int count = 3;
+            foreach (KeyValuePair<string,object> kv in columns) {
+                set += kv.Key + @" = @p" + count + ", ";
+                prms.Add(kv.Value);
+                count++;
+            }
+
+            request = update + set.TrimEnd(',') + where;
+            
+            if (DbConnection.CUDQuery(request, prms) > 0)
+                return true;
+            return false;
+
+        }
+
+        // External CreateSite Function:
+        // Push new site to Approve Table for review
+        public static Boolean ExtCreateSite(Dictionary<string, object> columns) {
+
+            List<object> prms = new List<object>();
+            string request;
+            string insert = @"INSERT INTO db.approve (";
+            string values = @"VALUES (";
+
+            columns.Add("Changes", Change.creation.ToString()); // use Change enum, for consistency.
+
+            int count = 0;
+            foreach (KeyValuePair<string,object> kv in columns) {
+                insert += kv.Key + ", ";
+                values += @"@p" + count + ", ";
+                prms.Add(kv.Value);
+                count++;
+            }
+
+            insert = insert.TrimEnd(new char[] { ',', ' ' }) + ") ";
+            values = values.TrimEnd(new char[] { ',', ' ' }) + ");";
+            request = insert + values;
+
+            if (DbConnection.CUDQuery(request, prms) > 0)
                 return true;
             return false;
         }
