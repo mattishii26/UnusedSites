@@ -20,8 +20,11 @@ namespace UnusedSites.Api
                    .AddJsonFile("websettings.json");
 
             Configuration = builder.Build();
-            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            return connectionString;
+            var dataSource = "Data Source=" + Configuration["ConnectionStrings:DataSource"] + "; ";
+            var catalog = "Initial Catalog=" + Configuration["ConnectionStrings:InitialCatalog"] + "; ";
+            var user = "User id=" + Configuration["ConnectionStrings:UserId"] + "; ";
+            var password = "Password=" + Configuration["ConnectionStrings:Password"] + "; ";
+            return dataSource + catalog + user + password;
         }
 
         /**
