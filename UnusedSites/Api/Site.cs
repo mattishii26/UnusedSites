@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace UnusedSites.Api
 {
@@ -73,9 +74,35 @@ namespace UnusedSites.Api
             return false;
         }
 
+        public static DataTable GetSite(int site_code)
+        {
+            //check to make sure this matches API fields, missing changes, reason, approved
+            string query = @"SELECT site.site_code, dist.dist_name, site.site_name, site.Status, un.num_acres, 
+                                    un.mo_last_used, un.yr_last_used, un.purch_price, un.appraised_value, 
+                                    un.mo_appraised, un.yr_appraised, un.current_value, un.grade_level
+                            FROM db.site as site,  db.unusedvb as un, db.district as dist
+                            WHERE site.site_code = @p0 
+                            AND site.dist_code = un.dist_code AND site.dist_code = dist.dist_code;";
+            List<object> siteGetParams = new List<object>();
+            siteGetParams.Add(site_code);
+
+            return DbConnection.SelectQuery(query, siteGetParams); ;
+        }
+
+        /*public static Boolean UpdateSite(int id, String district, String name, String status, double numAcres
+                                         int monthLastUsed, int yearLastUsed, double purchasePrice, double appraisedValue,
+                                         int monthAppraised, int yearAppraised, double currentValue, String gradeLevel
+                                         )
+      
+
+            return false;
+
+        }*/
+
         // External UpdateSite
         // Updates a site entry in Approve Table for review
-        public static Boolean ExtUpdateSite(Dictionary<string, object> columns) {
+        public static Boolean ExtUpdateSite(Dictionary<string, object> columns)
+        {
 
             List<object> prms = new List<object>();
             string request;
@@ -86,23 +113,25 @@ namespace UnusedSites.Api
             prms.Add(Change.updated.ToString());    // @p0
 
             object dist_code, site_code;
-            if (!(columns.TryGetValue("dist_code", out dist_code) && columns.TryGetValue("site_code", out site_code))) {
+            if (!(columns.TryGetValue("dist_code", out dist_code) && columns.TryGetValue("site_code", out site_code)))
+            {
                 // basically, this means you didn't successfully add either dist/site code to the dictionary
                 return false;
             }
             // if all goes well.
-            prms.Add((int) dist_code);    // @p1
-            prms.Add((int) site_code);    // @p2
+            prms.Add((int)dist_code);    // @p1
+            prms.Add((int)site_code);    // @p2
 
             int count = 3;
-            foreach (KeyValuePair<string,object> kv in columns) {
+            foreach (KeyValuePair<string, object> kv in columns)
+            {
                 set += kv.Key + @" = @p" + count + ", ";
                 prms.Add(kv.Value);
                 count++;
             }
 
             request = update + set.TrimEnd(',') + where;
-            
+
             if (DbConnection.CUDQuery(request, prms) > 0)
                 return true;
             return false;
@@ -111,7 +140,8 @@ namespace UnusedSites.Api
 
         // External CreateSite Function:
         // Push new site to Approve Table for review
-        public static Boolean ExtCreateSite(Dictionary<string, object> columns) {
+        public static Boolean ExtCreateSite(Dictionary<string, object> columns)
+        {
 
             List<object> prms = new List<object>();
             string request;
@@ -121,7 +151,8 @@ namespace UnusedSites.Api
             columns.Add("Changes", Change.creation.ToString()); // use Change enum, for consistency.
 
             int count = 0;
-            foreach (KeyValuePair<string,object> kv in columns) {
+            foreach (KeyValuePair<string, object> kv in columns)
+            {
                 insert += kv.Key + ", ";
                 values += @"@p" + count + ", ";
                 prms.Add(kv.Value);
@@ -136,6 +167,5 @@ namespace UnusedSites.Api
                 return true;
             return false;
         }
-
     }
 }
