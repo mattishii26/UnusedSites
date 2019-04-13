@@ -26,6 +26,17 @@ namespace UnusedSites.Controllers
         public IActionResult Dashboard()
         {
             var districts =  SiteData.GetDistricts().ToList();
+            var datatableinfo = Api.District.GetAllDistricts();
+            Console.Write("Hello World");
+            for (int j = 0; j < datatableinfo.Rows.Count; j++)
+            {
+                for (int i = 0; i < datatableinfo.Columns.Count; i++)    
+                    {    
+                        Console.Write(datatableinfo.Columns[i].ColumnName + " ");    
+                        Console.WriteLine(datatableinfo.Rows[j].ItemArray[i]); 
+                    }
+            }
+
             ViewData["Title"] = "Dashboard";
             return View(districts);
         }
