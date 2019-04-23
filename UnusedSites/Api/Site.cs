@@ -11,9 +11,10 @@ namespace UnusedSites.Api
 
         enum Change { creation, updated }   // to be used with "Changes" column in db.approve
 
-        public static Boolean CreateSite(int siteCode,int districtCode, int coCode, string siteName, int status, double numAcres, int monthLastUsed, int yearLastUsed,
+        public static Boolean CreateSite(int siteCode,int districtCode, int coCode, string siteName, double numAcres, int monthLastUsed, int yearLastUsed,
             double purchasePrice, double appraisedValue, int monthAppraised, int yearAppraised, double currentValue, string gradeLevel, string changes, string reason)
         {
+            int pendingStatus = 3;
             string siteQuery = @"insert into db.site (dist_code, co_code, site_name, site_code, Status)
                             values(@p0, @p1, @p2, @p3, @p4)
                             ;";
@@ -22,7 +23,7 @@ namespace UnusedSites.Api
             siteParam.Add(coCode);
             siteParam.Add(siteName);
             siteParam.Add(siteCode); 
-            siteParam.Add(status);
+            siteParam.Add(pendingStatus);
             int siteRows = DbConnection.CUDQuery(siteQuery, siteParam);
 
             string unusedQuery = @"insert into db.unusedvb (dist_code, co_code, site_code, num_acres, mo_last_used, yr_last_used, purch_price, appraised_value,
@@ -42,8 +43,8 @@ namespace UnusedSites.Api
             unusedParam.Add(yearAppraised);
             unusedParam.Add((decimal) currentValue);
             unusedParam.Add(gradeLevel);
-            unusedParam.Add(status);
-            unusedParam.Add((short) 90); // ask percent assessed
+            unusedParam.Add(pendingStatus);
+            unusedParam.Add((short) 0); // ask percent assessed
             unusedParam.Add(7000); // ask rec_num
             unusedParam.Add(changes);
             unusedParam.Add(reason);
@@ -79,12 +80,26 @@ namespace UnusedSites.Api
             return false;
         }
 
-                public static DataTable GetSite(int site_code)
+        public static DataTable GetSites(int distCode)
+        {
+            string query = @"SELECT site.site_code, dist.dist_name, site.site_name, site.Status, un.num_acres, 
+                                    un.mo_last_used, un.yr_last_used, un.purch_price, un.appraised_value, 
+                                    un.mo_appraised, un.yr_appraised, un.current_value, un.grade_level, un.changes, un.reason
+                            FROM db.site as site, db.unusedvb as un, db.district as dist
+                            WHERE dist.dist_code = @p0 
+                            AND site.dist_code = un.dist_code AND site.dist_code = dist.dist_code;";
+            List<object> getSitesParams = new List<object>();
+            getSitesParams.Add(distCode);
+
+            return DbConnection.SelectQuery(query, getSitesParams);
+        }
+
+        public static DataTable GetSite(int site_code)
         {
             //check to make sure this matches API fields, missing changes, reason, approved
             string query = @"SELECT site.site_code, dist.dist_name, site.site_name, site.Status, un.num_acres, 
                                     un.mo_last_used, un.yr_last_used, un.purch_price, un.appraised_value, 
-                                    un.mo_appraised, un.yr_appraised, un.current_value, un.grade_level
+                                    un.mo_appraised, un.yr_appraised, un.current_value, un.grade_level, un.changes, un.reason
                             FROM db.site as site, db.unusedvb as un, db.district as dist
                             WHERE site.site_code = @p0 
                             AND site.dist_code = un.dist_code AND site.dist_code = dist.dist_code;";
@@ -94,15 +109,54 @@ namespace UnusedSites.Api
             return DbConnection.SelectQuery(query, siteGetParams); ;
         }
 
-        /*public static Boolean UpdateSite(int id, String district, String name, String status, double numAcres
+        public static Boolean UpdateSite(int siteCode, string districtName, string siteName, double numAcres,
                                          int monthLastUsed, int yearLastUsed, double purchasePrice, double appraisedValue,
-                                         int monthAppraised, int yearAppraised, double currentValue, String gradeLevel
+                                         int monthAppraised, int yearAppraised, double currentValue, string gradeLevel,
+                                         string changes, string reason
                                          )
-      
+        {
+            int pendingStatus = 2;
+            string siteQuery = @"update db.site
+                            set site_name = @p0, Status = @p1
+                            where site_code = @p2
+                            ;";
+            List<object> siteParam = new List<object>();
+            siteParam.Add(siteName);
+            siteParam.Add(pendingStatus);
+            siteParam.Add(siteCode);
+            int siteRows = DbConnection.CUDQuery(siteQuery, siteParam);
+
+            string unusedQuery = @"update db.unusedvb
+                               set num_acres = @p0, mo_last_used = @p1, yr_last_used = @p2, purch_price = @p3,
+                                    appraised_value = @p4, mo_appraised = @p5, yr_appraised = @p6, current_value = @p7,
+                                    grade_level = @p8, status = @p9, changes = @p10, reason = @p11
+                                where site_code = @p12
+                               ;";
+            List<object> unusedParam = new List<object>();
+
+            unusedParam.Add((decimal)numAcres);
+            unusedParam.Add(monthLastUsed);
+            unusedParam.Add(yearLastUsed);
+            unusedParam.Add((decimal)purchasePrice);
+            unusedParam.Add((decimal)appraisedValue);
+            unusedParam.Add(monthAppraised);
+            unusedParam.Add(yearAppraised);
+            unusedParam.Add((decimal)currentValue);
+            unusedParam.Add(gradeLevel);
+            unusedParam.Add(pendingStatus);
+            unusedParam.Add(changes);
+            unusedParam.Add(reason);
+            unusedParam.Add(siteCode);
+            int unusedRows = DbConnection.CUDQuery(unusedQuery, unusedParam);
+
+            if (unusedRows > 0 && siteRows > 0)
+            {
+                return true;
+            }
 
             return false;
-
-        }*/
+        }
+      
 
         // External UpdateSite
         // Updates a site entry in Approve Table for review
