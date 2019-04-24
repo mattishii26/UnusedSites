@@ -20,8 +20,11 @@ namespace UnusedSites.Api
                    .AddJsonFile("websettings.json");
 
             Configuration = builder.Build();
-            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            return connectionString;
+            var dataSource = "Data Source=" + Configuration["ConnectionStrings:DataSource"] + "; ";
+            var catalog = "Initial Catalog=" + Configuration["ConnectionStrings:InitialCatalog"] + "; ";
+            var user = "User id=" + Configuration["ConnectionStrings:UserId"] + "; ";
+            var password = "Password=" + Configuration["ConnectionStrings:Password"] + "; ";
+            return dataSource + catalog + user + password;
         }
 
         /**
@@ -64,7 +67,7 @@ namespace UnusedSites.Api
             }
             catch (Exception e)
             {
-                //logging
+                // logging
             }
             return data;
         }
@@ -92,6 +95,7 @@ namespace UnusedSites.Api
                             else if (o is int) { cmd.Parameters.Add("@p" + count, SqlDbType.Int); }
                             else if (o is short) { cmd.Parameters.Add("@p" + count, SqlDbType.SmallInt); }
                             else if (o is DateTime) { cmd.Parameters.Add("@p" + count, SqlDbType.SmallDateTime); }
+                            else if (o is decimal) { cmd.Parameters.Add("@p" + count, SqlDbType.Decimal); }
                             cmd.Parameters["@p" + count].Value = o;
                             count++;
                         }
