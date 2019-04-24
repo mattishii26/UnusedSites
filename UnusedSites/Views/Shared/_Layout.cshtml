@@ -165,6 +165,9 @@
                     <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Dashboard" ? "active nav-item" : "nav-item")">
                         <a href="@Url.Action("Dashboard", "UnusedSites")" class="first-level-link"><span class="ca-gov-icon-flowchart" aria-hidden="true"></span>Dashboard</a>
                     </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Settings" ? "active nav-item" : "nav-item")">
+                        <a href="@Url.Action("Settings", "UnusedSites")" class="first-level-link"><span class="ca-gov-icon-gear" aria-hidden="true"></span>Settings</a>
+                    </li>
                     <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active nav-item" : "nav-item")">
                         <a href="@Url.Action("Home", "UnusedSites")" class="first-level-link"><span class="ca-gov-icon-lightbulb" aria-hidden="true"></span>Home</a>
                     </li>

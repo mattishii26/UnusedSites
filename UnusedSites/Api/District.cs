@@ -11,7 +11,7 @@ namespace UnusedSites.Api
 
         public static DataTable GetAllDistricts()
         {
-            string query = @"SELECT dist.dist_name, un.contact_salutation, un.contact_fname, un.contact_lname, un.contact_phone,
+            string query = @"SELECT dist.dist_code, dist.dist_name, un.contact_salutation, un.contact_fname, un.contact_lname, un.contact_phone,
                 un.date_sent, un.date_received, un.form424_rec_date
                 FROM db.unused_dist as un, db.district as dist
                 WHERE dist.dist_code = un.dist_code;";

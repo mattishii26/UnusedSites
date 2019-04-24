@@ -23,59 +23,71 @@
                 <div class="group" style="font-size: 20px;">
                     <table class="table table-default">
                         <tr>
-                            <th colspan="4"> @item.YearLastUsed     <br/>324 Crest Drive San Jose, CA</th>
+                            <th colspan="2" style="text-align:center;">Site Information - @item.YearLastUsed</th>
                         </tr>
                         <tr>
-                            <th colspan="2">Site Information</th>
-                            <th colspan="2">Appraisal Information</th>
+                            <th style="width:50%" >ID</th>
+                            <td style="width:50%" >@item.Id</td>
                         </tr>
                         <tr>
-                            <th>ID</th>
-                            <td>@item.Id</td>
-                            <th>Purchase Price</th>
-                            <td>$@item.PurchasePrice</td>
+                            <th style="width:50%" >Name</th>
+                            <td style="width:50%" >@item.Name</td>
                         </tr>
                         <tr>
-                            <th>Name</th>
-                            <td>@item.Name</td>
-                            <th>Appraised Value</th>
-                            <td>$@item.AppraisedValue</td>
+                            <th style="width:50%" >Status</th>
+                            <td style="width:50%" >@item.Status</td>
                         </tr>
                         <tr>
-                            <th>Status</th>
-                            <td>@item.Status</td>
-                            <th>Year Appraised</th>
-                            <td>@item.YearAppraised</td>
+                            <th style="width:50%" >Reason</th>
+                            <td style="width:50%" >@item.Reason</td>
                         </tr>
                         <tr>
-                            <th>Reason</th>
-                            <td>@item.Reason</td>
-                            <th>Month Appraised</th>
-                            <td>@item.MonthAppraised</td>
+                            <th style="width:50%" >Month Last Used</th>
+                            <td style="width:50%" >@item.MonthLastUsed</td>
                         </tr>
                         <tr>
-                            <th>Month Last Used</th>
-                            <td>@item.MonthLastUsed</td>
-                            <th>Current Value</th>
-                            <td>$@item.CurrentValue</td>
+                            <th style="width:50%" >Year Last Used</th>
+                            <td style="width:50%" >@item.YearLastUsed</td>
                         </tr>
                         <tr>
-                            <th>Year Last Used</th>
-                            <td>@item.YearLastUsed</td>
-                            <th>Grade Level</th>
-                            <td>@item.GradeLevel</td>
+                            <th style="width:50%" >Number of Acres</th>
+                            <td style="width:50%" >@item.NumAcres</td>
                         </tr>
                         <tr>
-                            <th>Number of Acres</th>
-                            <td>@item.NumAcres</td>
-                            <th>Approved</th>
-                            <td>@item.Approved</td>
+                            <th style="width:50%" >Parcels</th>
+                            <td style="width:50%" >@item.Id</td>
                         </tr>
                         <tr>
-                            <th>Parcels</th>
-                            <td>@item.Id</td>
-                            <th>Fee Assessed</th>
-                            <td>$@item.CurrentValue</td>
+                            <th style="width:50%" >Purchase Price</th>
+                            <td style="width:50%" >$@item.PurchasePrice</td>
+                        </tr>
+                        <tr>
+                            <th style="width:50%" >Appraised Value</th>
+                            <td style="width:50%" >$@item.AppraisedValue</td>
+                        </tr>
+                        <tr>
+                            <th style="width:50%" >Year Appraised</th>
+                            <td style="width:50%" >@item.YearAppraised</td>
+                        </tr>
+                        <tr>  
+                            <th style="width:50%" >Month Appraised</th>
+                            <td style="width:50%" >@item.MonthAppraised</td>
+                        </tr>
+                        <tr>
+                            <th style="width:50%" >Current Value</th>
+                            <td style="width:50%" >$@item.CurrentValue</td>
+                        </tr>
+                        <tr> 
+                            <th style="width:50%" >Grade Level</th>
+                            <td style="width:50%" >@item.GradeLevel</td>
+                        </tr>
+                        <tr>
+                            <th style="width:50%" >Approved</th>
+                            <td style="width:50%" >@item.Approved</td>
+                        </tr>
+                        <tr>
+                            <th style="width:50%" >Fee Assessed</th>
+                            <td style="width:50%" >$@item.CurrentValue</td>
                         </tr>
                     </table>
                 </div>

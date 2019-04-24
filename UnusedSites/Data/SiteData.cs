@@ -32,12 +32,22 @@ namespace UnusedSites.Data{
 
         public static District[] GetDistricts() // all districts for dashboard 
         {
-            District[] districts = new District[4];
-            districts[0] = new District(1, "Alpine", "Mr.", "Fergus", "Reid", "(916)461-4621","06/24/2017","07/07/2017", "07/07/2017",4);
-            districts[1] = new District(2, "Alta Loma", "Mrs.", "Helen", "Winter", "(530)427-4234","06/02/2017","07/01/2017", "07/01/2017",3);
-            districts[2] = new District(3, "Clovis", "Mr.", "William", "Blazkowicz", "(486)364-2356","05/24/2017","06/07/2017", "06/12/2017",6);
-            districts[3] = new District(4, "Folsom", "Mrs.", "Anya", "Oliwa", "(712)315-2358","03/20/2017","04/07/2017", "04/23/2017",2);
-
+            var datatableinfo = Api.District.GetAllDistricts();
+            District[] districts = new District[datatableinfo.Rows.Count];
+            for (int j = 0; j < datatableinfo.Rows.Count; j++)
+            {
+                districts[j] = new District(
+                    int.Parse(datatableinfo.Rows[j].ItemArray[0].ToString()), 
+                    datatableinfo.Rows[j].ItemArray[1].ToString(),
+                    datatableinfo.Rows[j].ItemArray[2].ToString(), 
+                    datatableinfo.Rows[j].ItemArray[3].ToString(), 
+                    datatableinfo.Rows[j].ItemArray[4].ToString(), 
+                    datatableinfo.Rows[j].ItemArray[5].ToString(), 
+                    datatableinfo.Rows[j].ItemArray[6].ToString(), 
+                    datatableinfo.Rows[j].ItemArray[7].ToString(), 
+                    datatableinfo.Rows[j].ItemArray[8].ToString(),
+                    4);
+            }
             return districts;
 
         }
@@ -45,6 +55,7 @@ namespace UnusedSites.Data{
         public static Site[] GetSite(int Id) // Every year of the same Site
         {
             Site[] sites = new Site[4];
+            
             sites[0] = new Site(1, "Alta Loma", "Campbell", "Used", 1.3, 11, 2018, 34000, 27000, 08, 2017, 35000, "k-12", "Submitted", "NA", "No");
             sites[1] = new Site(2, "Alta Loma", "Campbell", "Used", 1.3, 11, 2017, 35145, 31897, 09, 2016, 36631, "k-12", "Submitted", "NA", "No"); 
             sites[2] = new Site(3, "Alta Loma", "Campbell", "Used", 1.3, 11, 2016, 37142, 25453, 10, 2015, 37656, "k-12", "Submitted", "NA", "No");
