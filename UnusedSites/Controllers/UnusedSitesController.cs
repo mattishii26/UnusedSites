@@ -18,7 +18,7 @@ namespace UnusedSites.Controllers
         }
         public IActionResult Settings()
         {
-            ViewData["Title"] = "Home";
+            ViewData["Title"] = "Settings";
             return View();
         }
 

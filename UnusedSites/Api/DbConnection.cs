@@ -18,13 +18,10 @@ namespace UnusedSites.Api
             var builder = new ConfigurationBuilder()
                    .SetBasePath(Directory.GetCurrentDirectory())
                    .AddJsonFile("websettings.json");
-
+                   
             Configuration = builder.Build();
-            var dataSource = "Data Source=" + Configuration["ConnectionStrings:DataSource"] + "; ";
-            var catalog = "Initial Catalog=" + Configuration["ConnectionStrings:InitialCatalog"] + "; ";
-            var user = "User id=" + Configuration["ConnectionStrings:UserId"] + "; ";
-            var password = "Password=" + Configuration["ConnectionStrings:Password"] + "; ";
-            return dataSource + catalog + user + password;
+            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            return connectionString;
         }
 
         /**

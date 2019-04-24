@@ -1,7 +1,7 @@
 ﻿@model UnusedSites.Models.District
 <div class="group">
     <aside class="featured-narrative text-center">
-        <h1>@Model.Name District</h1>
+        <h1>@Model.Name</h1>
     </aside>
 </div>
 
@@ -46,7 +46,7 @@
                         @item.Id
                     </td>
                     <td>
-                        @Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Name, districtId = Model.Id})
+                        @Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Id, districtId = Model.Id})
                     </td>
                     <td>
                         @item.Status
@@ -79,10 +79,8 @@
 <div class="group">
     <div class="row">
         <div class="half text-left">
-            Shoowing 1 to x of Y entries
         </div>
         <div class="half text-right">
-            Previous 1 2 3 4 5 Next
         </div>
     </div>
 </div>
