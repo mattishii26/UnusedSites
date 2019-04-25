@@ -1,8 +1,73 @@
 ﻿<div class="group">
-    <aside class="featured-narrative text-center">
-        <h1>Unused Sites Program - Add a Site</h1>
+    <aside class="featured-narrative">
+        <h1 class="text-center">Unused Sites Program - Add a Site</h1>
+        <p>
+            <b>Instructions: </b>This form is used for each site requiring attention and must be returned by July 1, of each year. Complete only those sections that are relevant to the district's needs. Refer to Education Code (EC) Sections 17219 and 17224.
+        </p>
     </aside>
 </div>
+<div class="panel-group accordion" id="example-accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#example-accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">General Information</a>
+            </h4>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following are definitions and criteria used for unused sites.
+            </p>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <ul class="list-standout">
+                    <li>
+                        Type of Use (for Sections I, II, and IV) <br>
+                        <ol>
+                            <li>
+                                The site is currently used for the specific purpose for which it was acquired. This is deemed to mean used as an active K-12 school. A site acquired for use at one grade level may be used at another grade level.
+                            </li>
+                            <li>
+                                The site is currently used to house students for any California Department of Education program (including Adult Education) authorized by the Legislature, and operated by public school districts for which the district is receiving State School Fund apportionments.
+                            </li>
+                            <li>
+                                The site is currently used to house special education students.
+                            </li>
+                            <li>
+                                The site is currently used for district administration purposes including such support services as warehousing and maintenance facilities.
+                            </li>
+                            <li>
+                                The site is currently used for preschool or child care centers when operated by or under contract with a public school district or a county superintendent of schools.
+                            </li>
+                            <li>
+                                The site is currently used for a community college if attendance is allowed for high schoool students who have been recommended by the district, accepted by the college and are in the 11th and 12th grade (or in a lower grade and have received special approval). None of the class work may be used to supplant high school graduation required course work without special approval by both the district and the college.
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        Waiver of Fee<br />
+                        <p>
+                            A district may have the unused site assessment fees waived for a site which is being utilized more than one-half the fiscal year for the following purposes:<br />
+                        </p>
+                        <ol>
+                            <li>
+                                The distict or any governmental agency, pursuant to an agreement with the district uses the site for one of the following purposes:
+                                <ol>
+                                    <li>for public school purposes as outline under Type of Use listed above.</li>
+                                    <li>as a civic center used for the purposes as outlined in the Education Code Section 38131.</li>
+                                    <li>as a community playground.</li>
+                                    <li>as a playing field.</li>
+                                    <li>for outdoor recreational purposes.</li>
+                                </ol>
+                            </li>
+                            <li>The State Allocation Board, pursuant to agreement with the district utilizes the site to store emergency portable classrooms.</li>
+                            <li>The distict, or any public or private agency pursuant to agreement with the district utilizes the site for operation of a child care program.</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="panel panel-overstated">
     <div class="panel-heading text-center">
         <h3>Unused Site Information</h3>
@@ -166,28 +231,64 @@
         <h3>Section III - Delete This Site</h3>
     </div>
     <div class="panel-body">
-        <div class="row form-group">    
+        <div class="row form-group">
             <div class="form-check-group row">
-            <div class="offset-third two-thirds">
-                <label class="select">
-                    <span class="sr-only">Reason</span>
-                    <select name="deleteReason" id="deleteReason" onchange="deleteFormHandler()">
-                        <option value="soldDelete">Site was Sold</option>
-                        <option value="purposeDelete">Site is being used for School Purposes</option>
-                        <option value="constructDelete">Site is being used for the construction of school facilities</option>
-                    </select>
-                </label>
+                <div class="offset-third two-thirds">
+                    <label class="select">
+                        <span class="sr-only">Reason</span>
+                        <select name="deleteReason" id="deleteReason" onchange="deleteFormHandler()">
+                            <option default>If applicable, select site delete reason</option>
+                            <option value="soldDelete">Site was Sold</option>
+                            <option value="purposeDelete">Site is being used for School Purposes</option>
+                            <option value="constructDelete">Site is being used for the construction of school facilities</option>
+                        </select>
+                    </label>
+                </div>
             </div>
         </div>
-        </div>
-        <div id="soldDelete">
-            asd1
+        <div id="soldDelete" class="hidden">
+            <div class="form-group row">
+                <div class="third">
+                    <label class="control-label"><span class="required-label">* </span>Enter date escrow closed:</label>
+                </div>
+                <div class="two-thirds">
+                    <input class="formControl" placeholder="Enter Date" type="date" id="soldDeleteEscrow"/>
+                </div>
+            </div>
         </div>
         <div id="purposeDelete" class="hidden">
-            asd2
+            <div class="form-group row">
+                <div class="third">
+                    <label class="control-label"><span class="required-label">* </span>Enter date site began to be used:</label>
+                </div>
+                <div class="two-thirds">
+                    <input type="date" class="form-control" id="purposeDeleteDate"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="third">
+                    <label class="control-label"><span class="required-label">* </span>Enter type of use, 1-6: </label>
+                    <div class="feedback text-muted">
+                        <small>
+                            (Refer to General Information, "Type of Use")
+                        </small>
+                    </div>
+
+                </div>
+                <div class="two-thirds">
+                    <input type="number" min="1" max="6" class="form-control" id="purposeDeleteTypeUse" />
+                </div>
+            </div>
         </div>
         <div id="constructDelete" class="hidden">
-            asd3
+            <div class="form-group row">
+                <div class="third">
+                    <label class="control-label"><span class="required-label">* </span>Enter date construction contract signed:</label>
+                </div>
+                <div class="two-thirds">
+                    <input type="date" class="form-control" id="constructDeleteDate" />
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -221,6 +322,7 @@
                     <label class="select">
                         <span class="sr-only">Reason</span>
                         <select name="waiveReason" id="waiveReason" onchange="waiveFormHandler()">
+                            <option default>If applicable, select site waive reason</option>
                             <option value="usedWaive">Site will be used within no more than 3 years</option>
                             <option value="sellWaive">The district attemped to sell this site but received no acceptable bids</option>
                             <option value="leaseWaive">The district is leasing this site for at least one-half of the fiscal year to a tenant who is paying possessory taxes for that year equal to or greater than one percent of the adjusted value of the site</option>
@@ -230,17 +332,63 @@
                 </div>
             </div>
         </div>
-        <div id="usedWaive">
-            as
+        <div id="usedWaive" class="hidden">
+            <div class="form-group row">
+                <div class="third">
+                    <label class="control-label"><span class="required-label">* </span>How long will the site be used within?</label>
+                    <div class="featured-narrative">
+                        <small>
+                            District board resolution must be attached which included one or the uses outlined in "Type of Use"
+                        </small>
+                    </div>
+                </div>
+                <div class="two-thirds">
+                    <input class="form-control" type="number" min="0" max="3" id="usedWaiveYears"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="third">
+                    <label class="control-label"><span class="required-label">* </span>Enter the type of use, 1-6:</label>
+                    <div class="featured-narrative">
+                        <small>
+                            (Refer to General Information, "Type of Use")
+                        </small>
+                    </div>
+                </div>
+                <div class="two-thirds">
+                    <input class="form-control" id="usedWaiveUse" type="number" min="1" max="6" />
+                </div>
+            </div>
         </div>
         <div id="sellWaive" class="hidden">
-            asd2
+            <div class="form-group row">
+                <div class="third">
+                    <label class="control-label"><span class="required-label">* </span>Attemped Sale Date:</label>
+                </div>
+                <div class="two-thirds">
+                    <input class="form-control" id="sellWaive" type="date" />
+                </div>
+            </div>
         </div>
         <div id="leaseWaive" class="hidden">
-            asd3
+            <p>
+                The distict is leasing this site for at least one-half of the fiscal year to a tenant who is paying possessory taxes for that year equal to or greater than one percent of the adjust value of this site. Refer to EC 17219(f).
+            </p>
         </div>
         <div id="utilizeWaive" class="hidden">
-            asd4
+            <div class="form-group row">
+                <div class="third">
+                    <label class="control-label"><span class="required-label">* </span>Enter the type of waiver, 1-3:</label>
+                    <div class="feedback text-muted">
+                        <small>
+                            (Refer to General Information, "Waiver of Fee")
+                        </small>
+                    </div>
+                </div>
+                <div class="two-thirds">
+                    <input class="form-control" id="utilizeWaiveUse" type="number" min="1" max="3" />
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -255,6 +403,7 @@
                     <label class="select">
                         <span class="sr-only">Reason</span>
                         <select name="reduceReason" id="reduceReason" onchange="reduceFormHandler()">
+                            <option default>If applicable, select site reduction reason</option>
                             <option value="debtReduce">Reductions in fees for debt service on local bonds used to directly pay for the construction of school facilities</option>
                             <option value="modReduce">Requesting Modification of the adjusted value for this site</option>
                         </select>
@@ -262,11 +411,70 @@
                 </div>
             </div>
         </div>
-        <div id="debtReduce">
-            as
+        <div id="debtReduce" class="hidden"> 
+            <div class="form-group row">
+                <div class="third">
+                    <div class="control-label"><span class="required-label">* </span>Enter amount of reductions requested:</div>
+                    <div class="feedback text-muted">
+                        <small>
+                            (Amount cannot exceed bond debt service for that fiscal year assessed fee)
+                        </small>
+                    </div>
+                </div>
+                <div class="two-thirds">
+                    <input class="form-control" type="number" id="debtReduceReduce"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="third">
+                    <div class="control-label"><span class="required-label">* </span>Enter date debt service payment was made: </div>
+                </div>
+                <div class="two-thirds">
+                    <input class="form-control" id="debtReduceDebt" type="date" />
+                </div>
+            </div>
         </div>
         <div id="modReduce" class="hidden">
-            asd2
+            <div class="form-group row">
+                <div class="third">
+                    <div class="control-label"><span class="required-label">* </span>New Value:</div>
+                </div>
+                <div class="two-thirds">
+                    <input class="form-control" id="modReduceNewValue" type="number" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="third">
+                    <div class="control-label"><span class="required-label">* </span>Obtained by</div>
+                </div>
+                <div class="two-thirds">
+                    <div class="m-b">
+                        <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                            <input class="hidden-up pos-abs" type="checkbox">
+                            <div class="check-icon-checkbox">
+                                <i class="ca-gov-icon-check-mark"></i>
+                            </div>
+                            Appraiser
+                        </label>
+
+                        <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                            <input class="hidden-up pos-abs" type="checkbox">
+                            <div class="check-icon-checkbox">
+                                <i class="ca-gov-icon-check-mark"></i>
+                            </div>
+                            County Assessor
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="third">
+                    <div class="control-label"><span class="required-label">* </span>Date of Value</div>
+                </div>
+                <div class="two-thirds">
+                    <input class="form-control" id="modReduceDateValue" type="date"/>
+                </div>
+            </div>
         </div>
     </div>
 </div>
