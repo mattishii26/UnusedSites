@@ -4,30 +4,56 @@
         <h1>@Model.Name</h1>
     </aside>
 </div>
-
-<div class="group">
-    <div class="btn-row">
-        <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
-        <button class="btn btn-primary">EDIT DISTRICT</button>
-        <button onclick="location.href='@Url.Action("Dashboard", "UnusedSites")';return false;" class="btn btn-primary">BACK</button>
-        <input style="float: right;"type="text" placeholder="Search..." />
+<div class="btn-row text-left">
+    <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
+    <button class="btn btn-primary">EDIT DISTRICT</button>
+    <button onclick="location.href='@Url.Action("Dashboard", "UnusedSites")';return false;" class="btn btn-primary">BACK</button>
+</div>
+<div class="row">
+    <div class="half">
+        <p>
+            <b>ID:</b> @Model.Id<br />
+            <b>Name:</b> @Model.Name<br />
+            <b>Contact:</b> @Model.Contact_Salt @Model.Contact_FName @Model.Contact_LName<br />
+            <b>Contact Phone Number:</b> @Model.Contact_PNumber<br />
+            <b>Date Sent:</b> @Model.Date_Sent<br />
+            <b>Date Received:</b> @Model.Date_Received
+        </p>
+    </div>
+    <div class="quarter offset-quarter">
+        <div class="form-group">
+            <input type="text" class="form-control" id="filterDistrict" placeholder="Filter Unused Sites">
+        </div>
     </div>
 </div>
+@*<div class="group">
+        <div class="btn-row">
+            <input style="float: right;"type="text" placeholder="Search..." />
+        </div>
+    </div>*@
 
 <div class="group">
     <div class="table-responsive">
-        <ul style="list-style-type: none; font-size: 20px; padding: 0;">
+        @*<ul style="list-style-type: none; font-size: 20px; padding: 0;">
             <li><b>ID:</b> @Model.Id</li>
             <li><b>Name:</b> @Model.Name</li>
             <li><b>Contact:</b> @Model.Contact_Salt @Model.Contact_FName @Model.Contact_LName</li>
             <li><b>Contact Phone Number:</b> @Model.Contact_PNumber</li>
             <li><b>Date Sent:</b> @Model.Date_Sent</li>
             <li><b>Date Received:</b> @Model.Date_Received</li>
-        </ul>
+        </ul>*@
         <table class="table table-default">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>SITE NAME</th>
+                    <th>SITE CODE</th>
+                    <th>STATUS</th>
+                    <th>REASON</th>
+                    <th>GRADE LEVEL</th>
+                    <th>LAST YEAR USED</th>
+                    <th>EFFECTIVE FEE</th>
+                    <th>APPROVED</th>
+                    @*<th>ID</th>
                     <th>SITE NAME</th>
                     <th>STATUS</th>
                     <th>REASON</th>
@@ -35,52 +61,78 @@
                     <th>CURRENT VALUE</th>
                     <th>GRADE LEVEL</th>
                     <th>CHANGES</th>
-                    <th>APPROVED</th>
+                    <th>APPROVED</th>*@
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="districtUnusedSites">
                 @foreach (var item in Model.Sites)
                 {
-                <tr>
-                    <td>
-                        @item.Id
-                    </td>
-                    <td>
-                        @Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Id, districtId = Model.Id})
-                    </td>
-                    <td>
-                        @item.Status
-                    </td>
-                    <td>
-                        @item.Reason
-                    </td>
-                    <td>
-                        @item.YearLastUsed
-                    </td>
-                    <td>
-                        $@item.CurrentValue
-                    </td>
-                    <td>
-                        @item.GradeLevel
-                    </td>
-                    <td>
-                        @item.Changes
-                    </td>
-                    <td>
-                        @item.Approved
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @Html.ActionLink(item.Name, "Site", "UnusedSites", new { id = item.Id, districtId = Model.Id })
+                        </td>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.Status
+                        </td>
+                        <td>
+                            @item.Reason
+                        </td>
+                        <td>
+                            @item.GradeLevel
+                        </td>
+                        <td>
+                            @item.YearLastUsed
+                        </td>
+                        <td>
+                            FILL IN
+                        </td>
+                        <td>
+                            @item.Approved
+                        </td>
+                        @*<td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @Html.ActionLink(item.Name, "Site", "UnusedSites", new { id = item.Id, districtId = Model.Id })
+                        </td>
+                        <td>
+                            @item.Status
+                        </td>
+                        <td>
+                            @item.Reason
+                        </td>
+                        <td>
+                            @item.YearLastUsed
+                        </td>
+                        <td>
+                            $@item.CurrentValue
+                        </td>
+                        <td>
+                            @item.GradeLevel
+                        </td>
+                        <td>
+                            @item.Changes
+                        </td>
+                        <td>
+                            @item.Approved
+                        </td>*@
+                    </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
 
-<div class="group">
-    <div class="row">
-        <div class="half text-left">
-        </div>
-        <div class="half text-right">
-        </div>
-    </div>
-</div>
+<script>
+    $(document).ready(function () {
+        $("#filterDistrict").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#districtUnusedSites tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

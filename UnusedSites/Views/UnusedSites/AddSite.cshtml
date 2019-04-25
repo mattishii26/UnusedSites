@@ -3,10 +3,57 @@
         <h1>Unused Sites Program - Add a Site</h1>
     </aside>
 </div>
-
 <div class="panel panel-overstated">
     <div class="panel-heading text-center">
-        <h3>SAB 424 - Section I - Add a Site - Refer to EC 17219(a)</h3>
+        <h3>Unused Site Information</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row form-group">
+            <div class="third">
+                <label for="schoolDistrictName">
+                    <span class="required-label">*</span>SCHOOL DISTRICT
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="schoolDistrictName" placeholder="Enter School District">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="schoolCountyName">
+                    <span class="required-label">*</span>COUNTY
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="schoolCountyName" placeholder="Enter County">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="schoolSiteName">
+                    <span class="required-label">*</span>SITE NAME
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="schoolSiteName" placeholder="Enter Site Name">
+            </div>
+        </div>
+        @* Date can be generated when form is submitted! *@
+        @*<div class="row form-group">
+            <div class="third">
+                <label for="agentTitle">
+                    <span class="required-label">*</span>DATE
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="todaysDate" placeholder="Enter date">
+            </div>
+        </div>*@
+    </div>
+</div>
+<div class="panel panel-overstated">
+    <div class="panel-heading text-center">
+        <h3>Section I - Add a Site - Refer to EC 17219(a)</h3>
     </div>
     <div class="panel-body">
         <div class="row text-center"><label>Please check one.</label></div>
@@ -113,7 +160,146 @@
         </div>
     </div>
 </div>
-
+<div class="panel panel-overstated">
+    <div class="panel-heading text-center">
+        <h3>Section II - Delete this Site</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row form-group">
+            <div class="col-xs-offset-1">
+                <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                    <input class="hidden-up pos-abs" name="deleteSite" type="radio" onclick>
+                    <div class="check-icon-radio">
+                        <i></i>
+                    </div>
+                    Site was sold
+                </label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-offset-1">
+                <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                    <input class="hidden-up pos-abs" name="deleteSite" type="radio">
+                    <div class="check-icon-radio">
+                        <i></i>
+                    </div>
+                    Site is being used for school purposes
+                </label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-offset-1">
+                <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                    <input class="hidden-up pos-abs" name="deleteSite" type="radio">
+                    <div class="check-icon-radio">
+                        <i></i>
+                    </div>
+                    Site is being used for the construction of school facitilies
+                </label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="agentName">
+                    Authorized Agent Name:
+                </label>
+            </div>
+            <div class="two-thirds">
+                INSERT FROM DATABASE???
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="agentTitle">
+                    <span class="required-label">*</span>Authorized Agent Title:
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="agentTitle" placeholder="Enter Agent Title">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="agentPhone">
+                    <span class="required-label">*</span>Authorized Agent Phone Number:
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="agentPhone" placeholder="Enter Agent Phone Number">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-overstated">
+    <div class="panel-heading text-center">
+        <h3>Section II - Delete this Site</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row form-group">
+            <div class="col-xs-offset-1">
+                <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                    <input class="hidden-up pos-abs" name="deleteSite" type="radio" onclick>
+                    <div class="check-icon-radio">
+                        <i></i>
+                    </div>
+                    Site was sold
+                </label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-offset-1">
+                <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                    <input class="hidden-up pos-abs" name="deleteSite" type="radio">
+                    <div class="check-icon-radio">
+                        <i></i>
+                    </div>
+                    Site is being used for school purposes
+                </label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-offset-1">
+                <label class="form-check-inline p-l-md m-l-0 m-r-md">
+                    <input class="hidden-up pos-abs" name="deleteSite" type="radio">
+                    <div class="check-icon-radio">
+                        <i></i>
+                    </div>
+                    Site is being used for the construction of school facitilies
+                </label>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="agentName">
+                    Authorized Agent Name:
+                </label>
+            </div>
+            <div class="two-thirds">
+                INSERT FROM DATABASE???
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="agentTitle">
+                    <span class="required-label">*</span>Authorized Agent Title:
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="agentTitle" placeholder="Enter Agent Title">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="third">
+                <label for="agentPhone">
+                    <span class="required-label">*</span>Authorized Agent Phone Number:
+                </label>
+            </div>
+            <div class="two-thirds">
+                <input type="text" class="form-control" id="agentPhone" placeholder="Enter Agent Phone Number">
+            </div>
+        </div>
+    </div>
+</div>
 <div class="panel panel-overstated">
     <div class="panel-heading text-center">
         <h3>Contact Information</h3>

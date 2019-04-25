@@ -1,101 +1,275 @@
 ﻿@model List<UnusedSites.Models.Site>
-<div class="group">
-    <aside class="featured-narrative text-center">
-        <h1>Campbell School Site</h1>
-    </aside>
-</div>
-
-<div class="group">
+    <div class="group">
+        <aside class="featured-narrative text-center">
+            <h1>Campbell School Site</h1>
+        </aside>
+    </div>
     <div class="btn-row">
         <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
         <button class="btn btn-primary">EDIT SITE</button>
         <button onclick="location.href='@Url.Action("District", "UnusedSites", new{ id = ViewData["districtId"]} )';return false;" class="btn btn-primary">BACK</button>
         <button class="btn btn-primary">APPROVE</button>
     </div>
-</div>
-<div class="carousel owl-carousel carousel-content">
-    @foreach (var item in Model)
-     {
-        <div class="content-container" style="color: black;">
+    <script>
+        var previousYear;
+        var currentYear;
+        function displaySiteInfoYear() {
+            currentYear = $("#siteInfoYear").val();
+            $("#siteInfo_" + previousYear).addClass('hidden');
+            $("#siteInfo_" + currentYear).removeClass('hidden');
 
-            <div class="content">
-
-                <div class="group" style="font-size: 20px;">
-                    <table class="table table-default">
-                        <tr>
-                            <th colspan="2" style="text-align:center;">Site Information - @item.YearLastUsed</th>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >ID</th>
-                            <td style="width:50%" >@item.Id</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Name</th>
-                            <td style="width:50%" >@item.Name</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Status</th>
-                            <td style="width:50%" >@item.Status</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Reason</th>
-                            <td style="width:50%" >@item.Reason</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Month Last Used</th>
-                            <td style="width:50%" >@item.MonthLastUsed</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Year Last Used</th>
-                            <td style="width:50%" >@item.YearLastUsed</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Number of Acres</th>
-                            <td style="width:50%" >@item.NumAcres</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Parcels</th>
-                            <td style="width:50%" >@item.Id</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Purchase Price</th>
-                            <td style="width:50%" >$@item.PurchasePrice</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Appraised Value</th>
-                            <td style="width:50%" >$@item.AppraisedValue</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Year Appraised</th>
-                            <td style="width:50%" >@item.YearAppraised</td>
-                        </tr>
-                        <tr>  
-                            <th style="width:50%" >Month Appraised</th>
-                            <td style="width:50%" >@item.MonthAppraised</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Current Value</th>
-                            <td style="width:50%" >$@item.CurrentValue</td>
-                        </tr>
-                        <tr> 
-                            <th style="width:50%" >Grade Level</th>
-                            <td style="width:50%" >@item.GradeLevel</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Approved</th>
-                            <td style="width:50%" >@item.Approved</td>
-                        </tr>
-                        <tr>
-                            <th style="width:50%" >Fee Assessed</th>
-                            <td style="width:50%" >$@item.CurrentValue</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+        }
+        function getCurrentYear() {
+            previousYear = $("#siteInfoYear").val()
+        }
+        $(document).ready(function () {
+            currentYear = $("#siteInfoYear").val();
+            $("#siteInfo_" + currentYear).removeClass('hidden');
+        });
+    </script>
+    <div class="row">
+        <div class="quarter offset-three-quarters">
+            <label class="select">
+                <span class="sr-only">Select Site Information Years:</span>
+                <select name="siteInfoYear" id="siteInfoYear" onchange="displaySiteInfoYear()" onclick="getCurrentYear()">
+                    @*<option value="Default" default>Select Site Information by Year</option>*@
+                    @foreach (var item in Model)
+                    {
+                        <option value=@item.YearLastUsed>Site Information for @item.YearLastUsed</option>
+                    }
+                </select>
+            </label>
         </div>
-    }
+    </div>
+    <div class="group">
+        <div id="siteInfoYearTable">
+            @foreach (var item in Model)
+            {
+                @*<tr>
+                        <th colspan="2" style="text-align:center;">Site Information - @item.YearLastUsed</th>
+                    </tr>*@
+                <div class="content-container hidden" id="siteInfo_@item.YearLastUsed" style="color: black;">
+                    <div class="content">
+                        <div class="group" style="font-size: 20px;">
+                            <div class="half">
+                                <table class="table table-default">
+                                    <tr>
+                                        <th colspan="2">
+                                            Site Information
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Site Code - ID</th>
+                                        <td style="width:50%">@item.Id</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Name</th>
+                                        <td style="width:50%">@item.Name</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Status</th>
+                                        <td style="width:50%">@item.Status</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Reason</th>
+                                        <td style="width:50%">@item.Reason</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:50%">Number of Acres</th>
+                                        <td style="width:50%">@item.NumAcres</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Month Last Used</th>
+                                        <td style="width:50%">@item.MonthLastUsed</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Year Last Used</th>
+                                        <td style="width:50%">@item.YearLastUsed</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Approved</th>
+                                        <td style="width:50%">@item.Approved</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Acquired</th>
+                                        <td style="width:50%"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Grade Level</th>
+                                        <td style="width:50%">@item.GradeLevel</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Parcels</th>
+                                        @*<td style="width:50%">@item.Id</td>*@
+
+                                        <td style="width:50%">
+                                            <div class="panel-group accordion" id="example-accordion" role="tablist" aria-multiselectable="true">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" role="tab" id="headingOne">
+                                                        <h4 class="panel-title">
+                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#example-accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Total Parcels: [Total Count]</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                        <div class="panel-body">
+                                                            <ul class="list-standout">
+                                                                <li>
+                                                                    @item.Id
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Waiver Fee</th>
+                                        <td style="width:50%"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Reduced Fee</th>
+                                        <td style="width:50%"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">New Site</th>
+                                        <td style="width:50%"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Site Deleted</th>
+                                        <td style="width:50%"></td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                            <div class="half">
+                                <table class="table table-default">
+                                    <tr>
+                                        <th colspan="2">
+                                            Site Appraised
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Purchase Price</th>
+                                        <td style="width:50%">$@item.PurchasePrice</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Appraised Value</th>
+                                        <td style="width:50%">$@item.AppraisedValue</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Month Appraised</th>
+                                        <td style="width:50%">@item.MonthAppraised</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Year Appraised</th>
+                                        <td style="width:50%">@item.YearAppraised</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Current Value</th>
+                                        <td style="width:50%">$@item.CurrentValue</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Percent Assessed</th>
+                                        <td style="width:50%"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">Fee Assessed</th>
+                                        <td style="width:50%">$@item.CurrentValue</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 
-<script>
 
-</script>
+    @*<div class="carousel owl-carousel carousel-content">
+        @foreach (var item in Model)
+         {
+            <div class="content-container" style="color: black;">
+
+                <div class="content">
+
+                    <div class="group" style="font-size: 20px;">
+                        <table class="table table-default">
+                            <tr>
+                                <th colspan="2" style="text-align:center;">Site Information - @item.YearLastUsed</th>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >ID</th>
+                                <td style="width:50%" >@item.Id</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Name</th>
+                                <td style="width:50%" >@item.Name</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Status</th>
+                                <td style="width:50%" >@item.Status</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Reason</th>
+                                <td style="width:50%" >@item.Reason</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Month Last Used</th>
+                                <td style="width:50%" >@item.MonthLastUsed</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Year Last Used</th>
+                                <td style="width:50%" >@item.YearLastUsed</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Number of Acres</th>
+                                <td style="width:50%" >@item.NumAcres</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Parcels</th>
+                                <td style="width:50%" >@item.Id</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Purchase Price</th>
+                                <td style="width:50%" >$@item.PurchasePrice</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Appraised Value</th>
+                                <td style="width:50%" >$@item.AppraisedValue</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Year Appraised</th>
+                                <td style="width:50%" >@item.YearAppraised</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Month Appraised</th>
+                                <td style="width:50%" >@item.MonthAppraised</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Current Value</th>
+                                <td style="width:50%" >$@item.CurrentValue</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Grade Level</th>
+                                <td style="width:50%" >@item.GradeLevel</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Approved</th>
+                                <td style="width:50%" >@item.Approved</td>
+                            </tr>
+                            <tr>
+                                <th style="width:50%" >Fee Assessed</th>
+                                <td style="width:50%" >$@item.CurrentValue</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>*@
+    <script>
+
+    </script>
