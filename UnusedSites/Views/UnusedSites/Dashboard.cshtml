@@ -5,10 +5,20 @@
     </aside>
 </div>
 <br />
-<div class="group">
+<div class="btn-row text-left">
+    <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
+</div>
+<div class="row">
+    <div class="quarter offset-three-quarters">
+        <div class="form-group">
+            <input type="text" class="form-control" id="filterDistrict" placeholder="Filter Unused Sites">
+        </div>
+    </div>
+</div>
+@*<div class="group">
     <div class="row">
         <div class="quarter">
-                <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
+                
         </div>
         <div class="quarter">
             <label class="select">
@@ -28,7 +38,10 @@
                 <input type="text" class="form-control" id="validationFirstName" placeholder="District Code" value="Search By District Code">
             </div>
         </div>
-        <div class="quarter">
+        <div class="quarter offset-half">
+            <div class="form-group">
+                <input type="text" class="form-control" id="filterDistrict" placeholder="Filter Unused Sites">
+            </div>
             <div class="input-group" id="districtCodeSort">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ca-gov-icon-search-right"></i></span>
@@ -37,8 +50,23 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <br />
+
+<div class="container">
+    <p>
+        Approved values:
+        Submitted
+
+        Static
+
+        Edited
+
+        Submitted
+
+        Approved
+    </p>
+</div>
 <div class="group">
     <div class="row">
         <div class="half text-left">
@@ -50,58 +78,98 @@
         <table class="table table-default">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>DISTRICT NAME</th>
+                    <th>COUNTY CODE</th>
+                    <th>DISTRICT CODE</th>
+                    <th>CONTACT NAME</th>
+                    <th>CONTACT NUMBER</th>
+                    <th># OF SITES</th>
+                    <th>CHANGES REQUESTED</th>
+                    <th>APPROVED</th>
+                    @*<th>ID</th>
                     <th>District</th>
                     <th>CONTACT</th>
                     <th>PHONE NUMBER</th>
                     <th>DATE SENT</th> 
                     <th>DATE RECIEVED</th>
+                    <th>DATE APPROVED</th>
                     <th>424 FORM DATE RECIEVED</th>
-                    <th>NUMBER OF SITES</th>
+                    <th>NUMBER OF SITES</th>*@
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="dashboardUnusedSites">
                 @foreach(var item in Model){
-                    <tr>
-                        <td>
-                            @item.Id
-                        </td>
-                        <td>                 
-                            @Html.ActionLink(item.Name, "District", "UnusedSites", new {id = item.Id })
-                        </td>
-                        <td>
-                            @item.Contact_Salt
-                            @*@Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Name})*@
-                            @item.Contact_FName
-                            @item.Contact_LName
-                        </td>
-                        <td>
-                            @item.Contact_PNumber
-                        </td>
-                        <td>
-                            @item.Date_Sent
-                        </td>
-                        <td>
-                            @item.Date_Received
-                        </td>
-                        <td>
-                            @item.From424_Rec_Date
-                        </td>  
-                        <td>
-                            @item.NumSites
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Name, "District", "UnusedSites", new {id = item.Id })
+                    </td>
+                    <td>
+                        FILL IN
+                    </td>
+                    <td>
+                        FILL IN
+                    </td>
+                    <td>
+                        @item.Contact_FName
+                        @item.Contact_LName
+                    </td>
+                    <td>
+                        @item.Contact_PNumber
+                    </td>
+                    <td>
+                        FILL IN
+                    </td>
+                    <td>
+                        FILL IN
+                    </td>
+                    <td>
+                        FILL IN
+                    </td>
+
+                    @*
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.Name, "District", "UnusedSites", new {id = item.Id })
+                    </td>
+                    <td>
+                        @item.Contact_Salt
+                        @Html.ActionLink(item.Name, "Site", "UnusedSites", new {id = item.Name})
+                        @item.Contact_FName
+                        @item.Contact_LName
+                    </td>
+                    <td>
+                        @item.Contact_PNumber
+                    </td>
+                    <td>
+                        @item.Date_Sent
+                    </td>
+                    <td>
+                        @item.Date_Received
+                    </td>
+                    <td>
+                        FILL IN FROM DB
+                    </td>
+                    <td>
+                        @item.From424_Rec_Date
+                    </td>
+                    <td>
+                        @item.NumSites
+                    </td>
+                    *@
+                </tr>
                 }
             </tbody>
         </table>
     </div>
-
-
-<div class="group">
-    <div class="row">
-        <div class="half text-left">
-        </div>
-        <div class="half text-right">
-        </div>
-    </div>
-</div>
+<script>
+    $(document).ready(function () {
+        $("#filterDistrict").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#dashboardUnusedSites tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
