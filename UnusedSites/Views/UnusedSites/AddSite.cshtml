@@ -193,18 +193,18 @@
         </div>
         <div class="row form-group">
             <div class="third">
-                <label for="gradeLevel"><span class="required-label">*</span>Grade Level Start:</label>
+                <label for="gradeLevelStart"><span class="required-label">*</span>Grade Level Start:</label>
             </div>
             <div class="two-thirds">
-                <input type="text" class="form-control" id="gradeLevel" placeholder="Enter Starting Grade Level">
+                <input type="text" class="form-control" id="gradeLevelStart" placeholder="Enter Starting Grade Level">
             </div>
         </div>
         <div class="row form-group">
             <div class="third">
-                <label for="gradeLevel"><span class="required-label">*</span>Grade Level End:</label>
+                <label for="gradeLevelEnd"><span class="required-label">*</span>Grade Level End:</label>
             </div>
             <div class="two-thirds">
-                <input type="text" class="form-control" id="gradeLevel" placeholder="Enter Ending Grade Level">
+                <input type="text" class="form-control" id="gradeLevelEnd" placeholder="Enter Ending Grade Level">
             </div>
         </div>
         <div class="row form-group">
@@ -217,10 +217,10 @@
         </div>
         <div class="row form-group">
             <div class="third">
-                <label for="gradeLevel"><span class="required-label">*</span>Date Site Became Unused:</label>
+                <label for="dateUnused"><span class="required-label">*</span>Date Site Became Unused:</label>
             </div>
             <div class="two-thirds">
-                <input type="text" class="form-control" id="gradeLevel" placeholder="Enter Date the Site became Unused">
+                <input type="text" class="form-control" id="dateUnused" placeholder="Enter Date the Site became Unused">
             </div>
         </div>
     </div>
@@ -249,7 +249,7 @@
         <div id="soldDelete" class="hidden">
             <div class="form-group row">
                 <div class="third">
-                    <label class="control-label"><span class="required-label">* </span>Enter date escrow closed:</label>
+                    <label for="soldDeleteEscrow" class="control-label"><span class="required-label">* </span>Enter date escrow closed:</label>
                 </div>
                 <div class="two-thirds">
                     <input class="formControl" placeholder="Enter Date" type="date" id="soldDeleteEscrow"/>
@@ -259,7 +259,7 @@
         <div id="purposeDelete" class="hidden">
             <div class="form-group row">
                 <div class="third">
-                    <label class="control-label"><span class="required-label">* </span>Enter date site began to be used:</label>
+                    <label for="purposeDeleteDate" class="control-label"><span class="required-label">* </span>Enter date site began to be used:</label>
                 </div>
                 <div class="two-thirds">
                     <input type="date" class="form-control" id="purposeDeleteDate"/>
@@ -267,7 +267,7 @@
             </div>
             <div class="form-group row">
                 <div class="third">
-                    <label class="control-label"><span class="required-label">* </span>Enter type of use, 1-6: </label>
+                    <label for="purposeDeleteTypeUse" class="control-label"><span class="required-label">* </span>Enter type of use, 1-6: </label>
                     <div class="feedback text-muted">
                         <small>
                             (Refer to General Information, "Type of Use")
@@ -283,7 +283,7 @@
         <div id="constructDelete" class="hidden">
             <div class="form-group row">
                 <div class="third">
-                    <label class="control-label"><span class="required-label">* </span>Enter date construction contract signed:</label>
+                    <label for="constructDeleteDate" class="control-label"><span class="required-label">* </span>Enter date construction contract signed:</label>
                 </div>
                 <div class="two-thirds">
                     <input type="date" class="form-control" id="constructDeleteDate" />
@@ -335,7 +335,7 @@
         <div id="usedWaive" class="hidden">
             <div class="form-group row">
                 <div class="third">
-                    <label class="control-label"><span class="required-label">* </span>How long will the site be used within?</label>
+                    <label for="usedWaiveYears" class="control-label"><span class="required-label">* </span>How long will the site be used within?</label>
                     <div class="featured-narrative">
                         <small>
                             District board resolution must be attached which included one or the uses outlined in "Type of Use"
@@ -348,7 +348,7 @@
             </div>
             <div class="form-group row">
                 <div class="third">
-                    <label class="control-label"><span class="required-label">* </span>Enter the type of use, 1-6:</label>
+                    <label for="usedWaiveUse" class="control-label"><span class="required-label">* </span>Enter the type of use, 1-6:</label>
                     <div class="featured-narrative">
                         <small>
                             (Refer to General Information, "Type of Use")
@@ -363,10 +363,10 @@
         <div id="sellWaive" class="hidden">
             <div class="form-group row">
                 <div class="third">
-                    <label class="control-label"><span class="required-label">* </span>Attemped Sale Date:</label>
+                    <label for="sellWaiveUse" class="control-label"><span class="required-label">* </span>Attemped Sale Date:</label>
                 </div>
                 <div class="two-thirds">
-                    <input class="form-control" id="sellWaive" type="date" />
+                    <input class="form-control" id="sellWaiveUse" type="date" />
                 </div>
             </div>
         </div>
@@ -378,7 +378,7 @@
         <div id="utilizeWaive" class="hidden">
             <div class="form-group row">
                 <div class="third">
-                    <label class="control-label"><span class="required-label">* </span>Enter the type of waiver, 1-3:</label>
+                    <label for="utilizeWaiveUse" class="control-label"><span class="required-label">* </span>Enter the type of waiver, 1-3:</label>
                     <div class="feedback text-muted">
                         <small>
                             (Refer to General Information, "Waiver of Fee")
@@ -414,7 +414,7 @@
         <div id="debtReduce" class="hidden"> 
             <div class="form-group row">
                 <div class="third">
-                    <div class="control-label"><span class="required-label">* </span>Enter amount of reductions requested:</div>
+                    <label for="debtReduceReduce" class="control-label"><span class="required-label">* </span>Enter amount of reductions requested:</label>
                     <div class="feedback text-muted">
                         <small>
                             (Amount cannot exceed bond debt service for that fiscal year assessed fee)
@@ -427,7 +427,7 @@
             </div>
             <div class="form-group row">
                 <div class="third">
-                    <div class="control-label"><span class="required-label">* </span>Enter date debt service payment was made: </div>
+                    <label for="debtReduceDebt" class="control-label"><span class="required-label">* </span>Enter date debt service payment was made: </label>
                 </div>
                 <div class="two-thirds">
                     <input class="form-control" id="debtReduceDebt" type="date" />
@@ -437,7 +437,7 @@
         <div id="modReduce" class="hidden">
             <div class="form-group row">
                 <div class="third">
-                    <div class="control-label"><span class="required-label">* </span>New Value:</div>
+                    <label for="modReduceNewValue" class="control-label"><span class="required-label">* </span>New Value:</label>
                 </div>
                 <div class="two-thirds">
                     <input class="form-control" id="modReduceNewValue" type="number" />
@@ -445,10 +445,10 @@
             </div>
             <div class="form-group row">
                 <div class="third">
-                    <div class="control-label"><span class="required-label">* </span>Obtained by</div>
+                    <label for="obtainedReduce" class="control-label"><span class="required-label">* </span>Obtained by</label>
                 </div>
                 <div class="two-thirds">
-                    <div class="m-b">
+                    <div class="m-b" id="obtainedReduce">
                         <label class="form-check-inline p-l-md m-l-0 m-r-md">
                             <input class="hidden-up pos-abs" type="checkbox">
                             <div class="check-icon-checkbox">
@@ -469,7 +469,7 @@
             </div>
             <div class="form-group row">
                 <div class="third">
-                    <div class="control-label"><span class="required-label">* </span>Date of Value</div>
+                    <label for="modReduceDateValue" class="control-label"><span class="required-label">* </span>Date of Value</label>
                 </div>
                 <div class="two-thirds">
                     <input class="form-control" id="modReduceDateValue" type="date"/>

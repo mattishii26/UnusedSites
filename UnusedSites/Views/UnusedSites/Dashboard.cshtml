@@ -6,12 +6,13 @@
 </div>
 <br />
 <div class="btn-row text-left">
-    <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" class="btn btn-primary">ADD NEW UNUSED SITE</button>
+    <button onclick="location.href='@Url.Action("AddSite", "UnusedSites")';return false;" alt="Add a new Unused Site" class="btn btn-primary">ADD NEW UNUSED SITE</button>
 </div>
 <div class="row">
     <div class="quarter offset-three-quarters">
         <div class="form-group">
-            <input type="text" class="form-control" id="filterDistrict" placeholder="Filter Unused Sites">
+            <label for="filterDistrict" class="form-control-label"> Filter Districts</label>
+            <input type="text" class="form-control" id="filterDistrict" placeholder="Filter Districts">
         </div>
     </div>
 </div>

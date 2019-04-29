@@ -8,7 +8,8 @@
     <div class="half offset-half">
         <div class="form-group row">
             <div class="two-thirds">
-                <input class="form-control" style="width:200px;" type="text" placeholder="New Percentage" />
+                <label for="newPercentage" class="form-control-label"> New Percentage</label>
+                <input id="newPercentage"class="form-control" style="width:200px;" type="text" placeholder="New Percentage" />
             </div>
             <div class="third">
                 <button onclick="location.href='@Url.Action("Settings", "UnusedSites")';return false;" class="btn btn-primary">Submit</button>
