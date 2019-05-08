@@ -108,16 +108,28 @@
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading" role="tab" id="headingOne">
                                                         <h4 class="panel-title">
-                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#example-accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Total Parcels: [@Model.Count]</a>
+                                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#example-accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Total Parcels: [5]</a>
                                                         </h4>
                                                     </div>
                                                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                                             <div class="panel-body">
                                                                 <ul class="list-standout">
-                                                                    @for(int i = 0; i < Model.Count; i++)
+                                                                    @for(int i = 0; i < 1; i++)
                                                                     {
                                                                         <li>
-                                                                            Parcel: @(i+1)
+                                                                            Parcel: 40403224
+                                                                        </li>
+                                                                        <li>
+                                                                            Parcel: 40403223
+                                                                        </li>
+                                                                        <li>
+                                                                            Parcel: 40403216
+                                                                        </li>
+                                                                        <li>
+                                                                            Parcel: 40403214
+                                                                        </li>
+                                                                        <li>
+                                                                            Parcel: 40404201
                                                                         </li>
                                                                     }
                                                                 </ul>
