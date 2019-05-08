@@ -49,7 +49,8 @@ namespace UnusedSites.Models{
     public class District
     {
         public District(int Id, string Name, string Contact_Salt, string Contact_FName, string Contact_LName,
-            string Contact_PNumber, string Date_Sent, string Date_Received, string From424_Rec_Date, List<Site> Sites)
+            string Contact_PNumber, string Date_Sent, string Date_Received, string From424_Rec_Date, int Co_Code, 
+            string Approved, List<Site> Sites)
         {
             this.Id = Id;
             this.Name = Name;
@@ -61,10 +62,13 @@ namespace UnusedSites.Models{
             this.Date_Received = Date_Received;
             this.From424_Rec_Date = From424_Rec_Date;
             this.Sites = Sites;
+            this.Co_Code = Co_Code;
+            this.Approved = Approved;
         }
 
         public District(int Id, string Name, string Contact_Salt, string Contact_FName, string Contact_LName,
-            string Contact_PNumber, string Date_Sent, string Date_Received, string From424_Rec_Date, int NumSites)
+            string Contact_PNumber, string Date_Sent, string Date_Received, string From424_Rec_Date, 
+            int Co_Code, string Approved, int NumSites)
         {
             this.Id = Id;
             this.Name = Name;
@@ -76,6 +80,9 @@ namespace UnusedSites.Models{
             this.Date_Received = Date_Received;
             this.From424_Rec_Date = From424_Rec_Date;
             this.NumSites = NumSites;
+            this.Co_Code = Co_Code;
+            this.Dist_Code = Dist_Code;
+            this.Approved = Approved;
         }
         public int Id { get; set; }
         public string Dist { get; set; }
@@ -89,6 +96,10 @@ namespace UnusedSites.Models{
         public string Date_Received { get; set; }
         public string From424_Rec_Date { get; set; }
         public int NumSites { get; set; }
+        public int Co_Code { get; set; } 
+        public int Dist_Code { get; set; } 
+        public int Changes_Requested { get; set; } 
+        public string Approved { get; set; } 
 
         public List<Site> Sites { get; set; }
 

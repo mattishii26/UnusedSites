@@ -11,8 +11,8 @@ namespace UnusedSites.Api
         public static DataTable GetAllDistricts()
         {
             string query = @"SELECT dist.dist_code, dist.dist_name, un.contact_salutation, un.contact_fname, un.contact_lname, un.contact_phone,
-                un.date_sent, un.date_received, un.form424_rec_date
-                FROM db.unused_dist as un, db.district as dist
+                un.date_sent, un.date_received, un.form424_rec_date, dist.co_code, dist.active, (SELECT COUNT(*) FROM db.unusedvb as cur WHERE cur.dist_code = dist.dist_code) AS count 
+                FROM db.unused_dist as un, .db.district as dist
                 WHERE dist.dist_code = un.dist_code;";
             return DbConnection.SelectQuery(query, new List<object>());
         }
@@ -20,7 +20,7 @@ namespace UnusedSites.Api
         public static DataTable GetDistrict(int dist_code)
         {
             string query = @"SELECT dist.dist_code, dist.dist_name, un.contact_salutation, un.contact_fname, un.contact_lname, un.contact_phone,
-                un.date_sent, un.date_received, un.form424_rec_date
+                un.date_sent, un.date_received, un.form424_rec_date, dist.co_code, dist.active
                 FROM db.unused_dist as un, db.district as dist
                 WHERE dist.dist_code = un.dist_code
                 AND dist.dist_code = @p0;";

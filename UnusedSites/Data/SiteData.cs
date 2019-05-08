@@ -44,6 +44,8 @@ namespace UnusedSites.Data{
                 datatableinfo.Rows[0].ItemArray[6].ToString(), 
                 datatableinfo.Rows[0].ItemArray[7].ToString(), 
                 datatableinfo.Rows[0].ItemArray[8].ToString(),
+                int.Parse(datatableinfo.Rows[0].ItemArray[9].ToString()),
+                datatableinfo.Rows[0].ItemArray[10].ToString(),
                 sites.ToList());
 
             return district;
@@ -65,7 +67,9 @@ namespace UnusedSites.Data{
                     datatableinfo.Rows[j].ItemArray[6].ToString(), 
                     datatableinfo.Rows[j].ItemArray[7].ToString(), 
                     datatableinfo.Rows[j].ItemArray[8].ToString(),
-                    4);
+                    int.Parse(datatableinfo.Rows[j].ItemArray[9].ToString()),
+                    datatableinfo.Rows[j].ItemArray[10].ToString(),
+                    int.Parse(datatableinfo.Rows[j].ItemArray[11].ToString()));
             }
             return districts;
 

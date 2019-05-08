@@ -85,7 +85,6 @@
                     <th>CONTACT NAME</th>
                     <th>CONTACT NUMBER</th>
                     <th># OF SITES</th>
-                    <th>CHANGES REQUESTED</th>
                     <th>APPROVED</th>
                     @*<th>ID</th>
                     <th>District</th>
@@ -105,10 +104,10 @@
                         @Html.ActionLink(item.Name, "District", "UnusedSites", new {id = item.Id })
                     </td>
                     <td>
-                        FILL IN
+                        @item.Co_Code
                     </td>
                     <td>
-                        FILL IN
+                        @item.Id
                     </td>
                     <td>
                         @item.Contact_FName
@@ -118,13 +117,10 @@
                         @item.Contact_PNumber
                     </td>
                     <td>
-                        FILL IN
+                        @item.NumSites
                     </td>
                     <td>
-                        FILL IN
-                    </td>
-                    <td>
-                        FILL IN
+                        @item.Approved
                     </td>
 
                     @*
@@ -150,7 +146,7 @@
                         @item.Date_Received
                     </td>
                     <td>
-                        FILL IN FROM DB
+                        @item.Date_Approved
                     </td>
                     <td>
                         @item.From424_Rec_Date
