@@ -111,18 +111,18 @@
                                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#example-accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Total Parcels: [@Model.Count]</a>
                                                         </h4>
                                                     </div>
-                                                    @for(int i = 0; i < Model.Count; i++)
-                                                    {
                                                         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                                             <div class="panel-body">
                                                                 <ul class="list-standout">
-                                                                    <li>
-                                                                        Parcel: @(i+1)
-                                                                    </li>
+                                                                    @for(int i = 0; i < Model.Count; i++)
+                                                                    {
+                                                                        <li>
+                                                                            Parcel: @(i+1)
+                                                                        </li>
+                                                                    }
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                    }
                                                 </div>
                                             </div>
                                         </td>
